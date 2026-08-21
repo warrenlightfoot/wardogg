@@ -39,18 +39,19 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .page{padding-bottom:calc(48px + env(safe-area-inset-bottom))}
 
 /* hero */
-.hero{position:relative;overflow:hidden;color:#fff;background:linear-gradient(135deg,#1A5CA3 0%,#2493CE 50%,#7FD0E6 100%);padding:34px 0 46px}
-.hero::before{content:"";position:absolute;right:-90px;top:-110px;width:340px;height:340px;border-radius:50%;background:rgba(255,196,150,.38)}
-.hero::after{content:"";position:absolute;left:-120px;bottom:-160px;width:360px;height:360px;border-radius:50%;background:rgba(255,255,255,.08)}
+.hero{position:relative;overflow:hidden;color:#fff;background:#1B4C9C;padding:32px 0 64px;min-height:330px}
+.scene{position:absolute;inset:0;width:100%;height:100%;display:block}
 .hero .wrap{position:relative;z-index:1}
+.title{text-shadow:0 2px 0 rgba(10,38,80,.28)}
+.sub{text-shadow:0 1px 0 rgba(10,38,80,.28)}
 .wave{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:34px;display:block;z-index:1}
-.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.3em;color:#FFD9BD;text-transform:uppercase;margin:0 0 6px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.3em;color:#FFE3C2;text-shadow:0 1px 0 rgba(10,38,80,.3);text-transform:uppercase;margin:0 0 6px}
 .title{font-family:var(--display);font-weight:800;text-transform:uppercase;line-height:.9;letter-spacing:.005em;margin:0;font-size:clamp(30px,8.8vw,76px);white-space:nowrap;color:#fff}
 .cond .title{font-size:clamp(44px,12.4vw,104px);letter-spacing:.01em}
 .sub{margin:12px 0 0;font-size:15px;color:rgba(255,255,255,.9);line-height:1.4}
 .sub b{color:#fff;font-weight:700}
 .meta{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin-top:16px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.92)}
-.chip{display:inline-block;padding:5px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.45);background:rgba(255,255,255,.14)}
+.chip{display:inline-block;padding:5px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.55);background:rgba(16,60,110,.35)}
 .chip.sun{background:#FFC9A3;color:#4A2A15;border-color:transparent;font-weight:700}
 
 /* nav */
@@ -162,6 +163,7 @@ section{margin-top:36px;scroll-margin-top:56px}
 .slots{display:grid;gap:6px}
 .slot{font-size:13px;font-weight:600;padding:7px 9px;border-radius:8px;background:var(--gulf-soft);color:var(--gulf-deep);text-align:center;line-height:1.2}
 .slot.open{background:transparent;border:1.5px dashed var(--dune);color:var(--faint);font-weight:500}
+.slot.mystery{background:var(--sun-soft);border:1.5px dashed var(--sun);color:var(--sun);font-weight:700;letter-spacing:.12em}
 .cap{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:4px 0 10px}
 .cell{width:26px;height:14px;border-radius:4px;background:var(--gulf)}
 .cell.open{background:transparent;border:1.5px dashed var(--faint)}
@@ -191,7 +193,7 @@ section{margin-top:36px;scroll-margin-top:56px}
     <p class="eyebrow">Wardogg's</p>
     <h1 class="title">Bachelorpalooza</h1>
     <p class="sub"><b>Naples, FL</b> · Thursday 3/4 – Sunday 3/7, 2027 · The Vineyards</p>
-    <div class="meta"><span class="chip sun" id="countdown">—</span><span id="route">→ RSW</span></div>
+    <div class="meta"><span class="chip" id="route">→ FL</span></div>
   </div>
   <svg class="wave" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0,22 C240,44 480,0 720,22 C960,44 1200,0 1440,22 L1440,40 L0,40 Z" fill="#FAF5EC"/></svg>
 </header>
@@ -343,6 +345,7 @@ const SPOTS=[
   {n:'Blue Martini',a:'9114 Strada Pl #12105, Naples, FL 34108',drive:'15 min from the house',keys:['Blue Martini']}
 ];
 
+const REVEAL_ONLY_CONFIRMED=true;   // names show only once the person has a confirmed flight
 const ROOMS=[
   {name:'Master Bedroom',beds:[{type:'King',slots:['Warren Lightfoot','Jackson Lightfoot']}]},
   {name:"Charles' Room",beds:[{type:'King',slots:['Charles Maxfield','Dan Yeh']},{type:'Air mattress',slots:['Wade Schaller']}]},
@@ -350,6 +353,38 @@ const ROOMS=[
   {name:'Kitchen Sectional',beds:[{type:'Sectional',slots:['James Crenshaw']}]},
   {name:'Living Room Couch',beds:[{type:'Couch',slots:['Mike Sehlinger']}]}
 ];
+
+/* ---------- hero scene (flat, Nagai-style) ---------- */
+function palm(x,y,h,dir,sc){
+  const tx=x+dir*h*0.22, ty=y-h, ink='#0F3A52';
+  let o='<path d="M'+(x-10*sc)+','+y+' Q'+(x+dir*h*0.02)+','+(y-h*0.55)+' '+(tx-4*sc)+','+ty+' L'+(tx+4*sc)+','+ty+' Q'+(x+dir*h*0.14)+','+(y-h*0.55)+' '+(x+10*sc)+','+y+' Z" fill="'+ink+'"/>';
+  [-160,-128,-96,-64,-32,-4,190].forEach(a=>{
+    const r=a*Math.PI/180, len=h*0.46*sc, droop=Math.abs(Math.cos(r))*len*0.4;
+    const ex=tx+Math.cos(r)*len, ey=ty+Math.sin(r)*len+droop;
+    const cx=(tx+ex)/2, cy=(ty+ey)/2-len*0.12, nx=-(ey-ty), ny=(ex-tx), nl=Math.hypot(nx,ny)||1, w=len*0.16;
+    o+='<path d="M'+tx+','+ty+' Q'+(cx+nx/nl*w)+','+(cy+ny/nl*w)+' '+ex+','+ey+' Q'+(cx-nx/nl*w)+','+(cy-ny/nl*w)+' '+tx+','+ty+' Z" fill="'+ink+'"/>';
+  });
+  o+='<circle cx="'+tx+'" cy="'+(ty+6)+'" r="'+(9*sc)+'" fill="'+ink+'"/>';
+  return o;
+}
+function cloud(x,y,sc){
+  const parts=[[0,0,34],[30,-16,46],[70,-6,40],[100,8,28],[-28,10,26]];
+  const body=parts.map(p=>'<circle cx="'+(x+p[0]*sc)+'" cy="'+(y+p[1]*sc)+'" r="'+(p[2]*sc)+'"/>').join('')+'<rect x="'+(x-54*sc)+'" y="'+y+'" width="'+(182*sc)+'" height="'+(26*sc)+'" rx="'+(13*sc)+'"/>';
+  return '<g fill="#BFE2F6" transform="translate(0,'+(9*sc)+')">'+body+'</g><g fill="#FFFFFF">'+body+'</g>';
+}
+function buildScene(){
+  let o='<svg class="scene" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMax slice" aria-hidden="true">';
+  o+='<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#143C8C"/><stop offset=".5" stop-color="#2A86D2"/><stop offset="1" stop-color="#A3E0F5"/></linearGradient></defs>';
+  o+='<rect width="1200" height="520" fill="url(#sky)"/>';
+  o+=cloud(1060,104,.8)+cloud(70,340,.55)+cloud(690,344,.42);
+  o+='<circle cx="790" cy="378" r="76" fill="#FFB070"/><circle cx="790" cy="378" r="62" fill="#FFC58C"/>';
+  o+='<rect y="378" width="1200" height="142" fill="#1FB3D4"/><rect y="378" width="1200" height="10" fill="#A8EEF5"/>';
+  o+='<rect y="414" width="1200" height="4" fill="#8AE4EF" opacity=".85"/><rect y="446" width="1200" height="4" fill="#8AE4EF" opacity=".6"/>';
+  o+='<g fill="#FFD9B4"><rect x="752" y="396" width="76" height="5"/><rect x="762" y="410" width="56" height="5"/><rect x="772" y="424" width="36" height="5"/></g>';
+  o+='<path d="M0,474 C220,458 520,502 820,484 C1000,474 1100,488 1200,480 L1200,520 L0,520 Z" fill="#F7E6C6"/>';
+  o+=palm(932,505,322,-1,1)+palm(994,508,232,-1,.8);
+  return o+'</svg>';
+}
 
 /* ---------- helpers ---------- */
 function toDate(d,t){ if(!d||!t) return null; const x=new Date(d+'T'+t+':00'); return isNaN(x.getTime())?null:x; }
@@ -457,17 +492,9 @@ function renderStrip(wrap,k,items,opts){
 }
 
 /* ---------- render ---------- */
-function renderCountdown(){
-  const now=new Date(), start=new Date(2027,2,4), end=new Date(2027,2,8);
-  let t;
-  if(now<start){ const d=Math.ceil((start-now)/864e5); t='T-'+d+' day'+(d===1?'':'s'); }
-  else if(now<end) t='Go time';
-  else t='In the books';
-  $('#countdown').textContent=t;
-}
 function renderRoute(){
   const set=new Set(); PEOPLE.forEach(p=>{ if(p.home) set.add(p.home.toUpperCase()); });
-  $('#route').textContent=Array.from(set).sort().join(' · ')+'  →  RSW';
+  $('#route').textContent=Array.from(set).sort().join(' · ')+'  →  FL';
 }
 function renderBlocks(host,lines){
   const list=el('div','blocks');
@@ -569,34 +596,42 @@ function bedSvg(bed){
 }
 function renderRooms(){
   const host=$('#roomcards'); host.innerHTML='';
-  let slots=0, filled=0; const assigned=new Set();
+  const confirmed=new Set(PEOPLE.filter(p=>landing(p)).map(p=>p.name));
+  const show=who=>!!who&&(!REVEAL_ONLY_CONFIRMED||confirmed.has(who));
+  let slots=0, filled=0, shown=0; const slotted=new Set();
   ROOMS.forEach(r=>{
     const card=el('div','panel room');
     const cap=r.beds.reduce((a,b)=>a+b.slots.length,0);
     const used=r.beds.reduce((a,b)=>a+b.slots.filter(Boolean).length,0);
-    slots+=cap; filled+=used;
+    const rev=r.beds.reduce((a,b)=>a+b.slots.filter(show).length,0);
+    slots+=cap; filled+=used; shown+=rev;
     const h=el('div','room-h'); h.appendChild(el('div','room-n',r.name));
-    const c=el('div','room-c'); c.innerHTML='<b>'+used+'</b> of '+cap+(cap===1?' spot':' spots'); h.appendChild(c); card.appendChild(h);
+    const c=el('div','room-c'); c.innerHTML=REVEAL_ONLY_CONFIRMED?('<b>'+rev+'</b> of '+cap+' revealed'):('<b>'+used+'</b> of '+cap+(cap===1?' spot':' spots')); h.appendChild(c); card.appendChild(h);
     const beds=el('div','beds'+(r.beds.length>1?' two':''));
     r.beds.forEach(b=>{
-      const bx=el('div'); bx.innerHTML=bedSvg(b);
+      const bx=el('div'); bx.innerHTML=bedSvg({type:b.type,slots:b.slots.map(w=>show(w)?w:null)});
       bx.appendChild(el('div','bedlbl',b.type+' · '+b.slots.length+(b.slots.length===1?' spot':' spots')));
       const sl=el('div','slots');
-      b.slots.forEach(who=>{ if(who){ assigned.add(who); sl.appendChild(el('div','slot',who)); } else sl.appendChild(el('div','slot open','Open')); });
+      b.slots.forEach(who=>{ if(who) slotted.add(who);
+        if(show(who)) sl.appendChild(el('div','slot',who));
+        else if(who){ const m=el('div','slot mystery','?'); m.title='Confirm your flight to reveal'; sl.appendChild(m); }
+        else sl.appendChild(el('div','slot open','Open')); });
       bx.appendChild(sl); beds.appendChild(bx);
     });
     card.appendChild(beds); host.appendChild(card);
   });
-  const un=PEOPLE.filter(p=>!assigned.has(p.name));
-  $('#roomnote').textContent=slots+' spots · '+PEOPLE.length+' people';
+  const un=PEOPLE.filter(p=>!slotted.has(p.name));
+  $('#roomnote').textContent=REVEAL_ONLY_CONFIRMED?(shown+' of '+PEOPLE.length+' revealed · confirm your flight to unlock yours'):(slots+' spots · '+PEOPLE.length+' people');
   const u=$('#unassigned'); u.innerHTML='';
-  const cap=el('div','cap');
-  for(let i=0;i<slots;i++) cap.appendChild(el('div','cell'+(i<filled?'':' open')));
-  for(let i=slots;i<PEOPLE.length;i++) cap.appendChild(el('div','cell over'));
-  const lbl=el('div','caplbl'); lbl.innerHTML='<b>'+filled+'</b> assigned · <b>'+(slots-filled)+'</b> open · <b>'+Math.max(0,PEOPLE.length-slots)+'</b> over capacity'; cap.appendChild(lbl);
-  u.appendChild(cap);
   $('#bedsh').style.display=un.length?'':'none'; u.style.display=un.length?'':'none';
-  if(un.length){ const chips=el('div','chips'); un.forEach(p=>chips.appendChild(el('div','pchip',p.name))); u.appendChild(chips); }
+  if(un.length){
+    const cap=el('div','cap');
+    for(let i=0;i<slots;i++) cap.appendChild(el('div','cell'+(i<filled?'':' open')));
+    for(let i=slots;i<PEOPLE.length;i++) cap.appendChild(el('div','cell over'));
+    const lbl=el('div','caplbl'); lbl.innerHTML='<b>'+filled+'</b> assigned · <b>'+(slots-filled)+'</b> open · <b>'+Math.max(0,PEOPLE.length-slots)+'</b> over capacity'; cap.appendChild(lbl);
+    u.appendChild(cap);
+    const chips=el('div','chips'); un.forEach(p=>chips.appendChild(el('div','pchip',p.name))); u.appendChild(chips);
+  }
 }
 
 function fitTitle(){
@@ -614,7 +649,8 @@ function relayout(){ clearTimeout(rt); rt=setTimeout(()=>{ const w=document.docu
 window.addEventListener('resize',relayout);
 if(window.ResizeObserver){ new ResizeObserver(relayout).observe(document.documentElement); }
 if(document.fonts&&document.fonts.load){ document.fonts.load('800 40px "Barlow Condensed"').then(fs=>{ if(fs&&fs.length) document.documentElement.classList.add('cond'); fitTitle(); renderDays(); renderArrivals(); }).catch(()=>{}); }
-render(); lastW=document.documentElement.clientWidth; renderCountdown(); setInterval(renderCountdown,60000);
+$('.hero').insertAdjacentHTML('afterbegin',buildScene());
+render(); lastW=document.documentElement.clientWidth;
 })();
 </script>
 </body>
