@@ -187,19 +187,13 @@ section{margin-top:36px;scroll-margin-top:calc(56px + env(safe-area-inset-top))}
 .pchip{font-size:13px;font-weight:600;padding:7px 10px;border-radius:999px;border:1.5px dashed var(--sunset);color:var(--sunset);background:#fff}
 
 /* add to home screen */
-.inst{padding:16px}
-.inst-h{display:flex;align-items:center;justify-content:space-between;gap:14px}
-.inst-t{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:24px;letter-spacing:.02em;line-height:1}
-.inst-s{color:var(--muted);font-size:13px;line-height:1.45;margin-top:5px}
-.btn{flex:none;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#fff;background:var(--gulf);padding:12px 16px;border-radius:999px;white-space:nowrap;text-align:center}
-.btn:hover{background:var(--gulf-deep)}
-.steps-w{margin-top:14px;padding-top:14px;border-top:1px solid var(--dune2)}
-.inst-warn{margin:0 0 12px;padding:9px 11px;border-radius:8px;background:var(--sun-soft);color:#5C4206;font-size:13px;line-height:1.45}
-.steps{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:s}
-.steps li{counter-increment:s;display:grid;grid-template-columns:24px minmax(0,1fr);gap:10px;align-items:center;font-size:14px;line-height:1.45}
-.steps li::before{content:counter(s);font-family:var(--mono);font-size:11px;font-weight:700;color:var(--gulf-deep);background:var(--gulf-soft);border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center}
-.ico{display:inline-block;width:17px;height:17px;vertical-align:-4px;margin:0 1px;color:var(--gulf-deep)}
-@media(max-width:480px){.inst-h{flex-direction:column;align-items:stretch}}
+.inst{text-align:center;color:var(--muted)}
+.inst-t{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:22px;letter-spacing:.02em;line-height:1}
+.inst-steps{display:flex;justify-content:center;align-items:flex-start;gap:18px;margin-top:14px}
+.step{display:flex;flex-direction:column;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);line-height:1.3}
+.step svg{width:26px;height:26px;display:block;color:var(--muted)}
+.inst-arr{font-family:var(--mono);font-size:16px;color:var(--faint);line-height:26px}
+.inst-warn{display:inline-block;margin:12px 0 0;padding:8px 11px;border-radius:8px;background:var(--sun-soft);color:#5C4206;font-size:13px;line-height:1.45}
 
 .foot{margin-top:40px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);text-align:center}
 
@@ -275,24 +269,14 @@ section{margin-top:36px;scroll-margin-top:calc(56px + env(safe-area-inset-top))}
   <div class="panel room" id="unassigned"></div>
 </section>
 
-<section id="install" hidden>
-  <div class="panel inst">
-    <div class="inst-h">
-      <div>
-        <div class="inst-t">Add it to your Home Screen</div>
-        <div class="inst-s">Opens full screen like an app, straight from Safari. Nothing to download.</div>
-      </div>
-      <button type="button" class="btn" id="installbtn" aria-expanded="false" aria-controls="steps">Show me how</button>
-    </div>
-    <div class="steps-w" id="steps" hidden>
-      <p class="inst-warn" id="inappnote" hidden>This is an in-app browser, which can't do it. Tap ··· and choose Open in Safari, then try again.</p>
-      <ol class="steps">
-        <li><span>Tap Share <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3"/><path d="M8 7l4-4 4 4"/><path d="M8 10H6a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-2"/></svg> in Safari's toolbar, the square with the arrow.</span></li>
-        <li><span>Scroll down the list and tap <b>Add to Home Screen</b>.</span></li>
-        <li><span>Tap <b>Add</b>. It shows up next to your other apps.</span></li>
-      </ol>
-    </div>
+<section id="install" class="inst" hidden>
+  <div class="inst-t">Add it to your Home Screen</div>
+  <div class="inst-steps">
+    <div class="step"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3"/><path d="M8 7l4-4 4 4"/><path d="M8 10H6a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-2"/></svg>Share</div>
+    <div class="inst-arr" aria-hidden="true">→</div>
+    <div class="step"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8.5v7M8.5 12h7"/></svg>Add to Home Screen</div>
   </div>
+  <p class="inst-warn" id="inappnote" hidden>Open this in Safari first. In-app browsers can't add it.</p>
 </section>
 
 <footer class="foot">Wardogg's Bachelorpalooza · Naples, FL · 3/4–3/7/2027 · Updated 8/21/26</footer>
@@ -714,12 +698,6 @@ function initInstall(){
   const standalone=navigator.standalone===true||(window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches);
   if(!ios||standalone){ sec.remove(); return; }
   $('#inappnote').hidden=!/FBAN|FBAV|FB_IAB|Instagram|Messenger|Snapchat|musical_ly|Bytedance|LinkedIn|GSA\//i.test(ua);
-  const btn=$('#installbtn'), steps=$('#steps');
-  btn.addEventListener('click',()=>{
-    const open=steps.hidden; steps.hidden=!open;
-    btn.textContent=open?'Hide':'Show me how'; btn.setAttribute('aria-expanded',String(open));
-    if(open) steps.scrollIntoView({behavior:'smooth',block:'nearest'});
-  });
   sec.hidden=false;
 }
 render(); initInstall(); lastW=document.documentElement.clientWidth;
