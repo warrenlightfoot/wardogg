@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wardogg Bachelorpalooza</title>
+<meta name="description" content="Wardogg's Bachelorpalooza · Naples, FL · Thursday 3/4 – Sunday 3/7, 2027. The plan, arrivals, spots, and rooms.">
+<meta property="og:title" content="Wardogg's Bachelorpalooza · Naples, FL">
+<meta property="og:description" content="Thursday 3/4 – Sunday 3/7, 2027. The plan, arrivals, spots, and rooms.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#2493CE">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="preview.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sand:#FAF5EC;--shell:#FFFFFF;--dune:#E6DCCB;--dune2:#F0E9DD;
+  --ink:#15324A;--muted:#5F7587;--faint:#8FA1B0;
+  --gulf:#2282C4;--gulf-deep:#1A66A0;--gulf-soft:#E3F0FA;
+  --palm:#1E9C8B;--palm-soft:#DDF3EF;
+  --sunset:#EF8A62;--sunset-soft:#FDE8DD;--sun:#D9961F;--sun-soft:#FCF0D8;
+  --display:"Barlow Condensed",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --body:system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --r:14px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--sand);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+a{color:var(--gulf-deep);text-decoration:none}
+a:hover{text-decoration:underline}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--gulf);outline-offset:2px}
+.wrap{max-width:920px;margin:0 auto;padding:0 16px}
+.page{padding-bottom:calc(48px + env(safe-area-inset-bottom))}
+
+/* hero */
+.hero{position:relative;overflow:hidden;color:#fff;background:linear-gradient(135deg,#1A5CA3 0%,#2493CE 50%,#7FD0E6 100%);padding:34px 0 46px}
+.hero::before{content:"";position:absolute;right:-90px;top:-110px;width:340px;height:340px;border-radius:50%;background:rgba(255,196,150,.38)}
+.hero::after{content:"";position:absolute;left:-120px;bottom:-160px;width:360px;height:360px;border-radius:50%;background:rgba(255,255,255,.08)}
+.hero .wrap{position:relative;z-index:1}
+.wave{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:34px;display:block;z-index:1}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.3em;color:#FFD9BD;text-transform:uppercase;margin:0 0 6px}
+.title{font-family:var(--display);font-weight:800;text-transform:uppercase;line-height:.9;letter-spacing:.005em;margin:0;font-size:clamp(30px,8.8vw,76px);white-space:nowrap;color:#fff}
+.cond .title{font-size:clamp(44px,12.4vw,104px);letter-spacing:.01em}
+.sub{margin:12px 0 0;font-size:15px;color:rgba(255,255,255,.9);line-height:1.4}
+.sub b{color:#fff;font-weight:700}
+.meta{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin-top:16px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.92)}
+.chip{display:inline-block;padding:5px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.45);background:rgba(255,255,255,.14)}
+.chip.sun{background:#FFC9A3;color:#4A2A15;border-color:transparent;font-weight:700}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:20;background:rgba(250,245,236,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--dune)}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;gap:24px;overflow-x:auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav button{display:block;padding:13px 0;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.nav button:hover{color:var(--gulf-deep)}
+
+/* sections */
+section{margin-top:36px;scroll-margin-top:56px}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:0 0 12px}
+.sec-h h2{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:30px;letter-spacing:.02em;margin:0;line-height:1;white-space:nowrap}
+.note{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gulf-deep);text-align:right}
+.sub-h{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gulf-deep);margin:20px 0 8px}
+.panel{background:var(--shell);border:1px solid var(--dune);border-radius:var(--r);overflow:hidden;box-shadow:0 1px 2px rgba(18,52,61,.05)}
+
+/* basics */
+.kv{display:grid;grid-template-columns:84px 1fr}
+.kv>div{padding:14px 16px;border-top:1px solid var(--dune2)}
+.kv>div:nth-child(-n+2){border-top:0}
+.kv .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gulf-deep);padding-top:17px;padding-right:0}
+.kv .v{font-size:15px;line-height:1.45;min-width:0}
+.kv .v small{display:block;color:var(--muted);font-size:13px;margin-top:3px;line-height:1.45}
+.lnk{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-left:8px;white-space:nowrap}
+.gate{display:inline-block;margin-top:8px;padding:8px 10px;border-radius:8px;background:var(--sun-soft);color:#5C4206;font-size:13px;line-height:1.4}
+
+/* plan */
+.days{display:grid;gap:14px}
+.day{padding:16px 16px 14px}
+.day-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:6px}
+.day-d{font-family:var(--display);font-weight:800;font-size:30px;line-height:1;text-transform:uppercase;letter-spacing:.01em}
+.day-d span{color:var(--muted);font-weight:600;font-size:22px;margin-left:7px}
+.day-t{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gulf-deep);background:var(--gulf-soft);padding:5px 9px;border-radius:999px;white-space:nowrap}
+.blocks{display:block}
+.blk{display:grid;grid-template-columns:76px minmax(0,1fr);gap:2px 12px;padding:10px 0;border-top:1px solid var(--dune2)}
+.blocks>:first-child{border-top:0}
+.blk .tm{font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:-.01em;line-height:1.35;padding-top:1px;white-space:nowrap;color:var(--gulf-deep)}
+.blk .tm small{display:block;font-weight:500;color:var(--faint);font-size:10.5px}
+.blk .tm.lbl{color:var(--faint);font-weight:500;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;padding-top:3px;white-space:normal}
+.blk .tt{font-weight:600;font-size:15px;line-height:1.35}
+.blk .tt.tbd{color:var(--sun)}
+.blk.leave .tt{color:var(--sunset)}
+.blk .nt{color:var(--muted);font-size:13px;line-height:1.45;margin-top:2px}
+.trv{display:grid;grid-template-columns:76px minmax(0,1fr);gap:0 12px;padding:4px 0}
+.trv .tx{font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;color:var(--faint);line-height:1.4}
+.trv .tx::before{content:"↳ "}
+
+/* arrivals (shared) */
+.mini{margin-top:10px;border-top:1px solid var(--dune2);padding-top:6px}
+.grp{padding:14px 16px 6px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gulf-deep);display:flex;align-items:center;gap:10px}
+.grp::after{content:"";flex:1;height:1px;background:var(--dune2)}
+.grp.wait{color:var(--faint)}
+.grp.out{color:var(--sunset)}
+.mini .grp{padding-left:0;padding-right:0}
+.row{display:grid;grid-template-columns:86px minmax(0,1fr) auto;gap:2px 10px;align-items:center;padding:12px 16px;border-top:1px solid var(--dune2)}
+.mini .row{padding-left:0;padding-right:0}
+.eta{font-family:var(--mono);font-size:16px;font-weight:700;letter-spacing:-.01em;color:var(--gulf-deep)}
+.eta.none{color:var(--faint);font-weight:500}
+.eta.out{color:var(--sunset)}
+.nm{font-weight:600;font-size:15px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--palm);border:1px solid var(--palm);border-radius:4px;padding:2px 5px;font-weight:500;background:var(--palm-soft)}
+.row .sub{color:var(--muted);font-size:12.5px;margin-top:2px;line-height:1.35}
+.row .sub a{color:var(--muted);text-decoration:underline;text-decoration-color:var(--dune)}
+.st{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;padding:4px 7px;border-radius:4px;border:1px solid transparent;white-space:nowrap}
+.st.locked{background:var(--gulf);color:#fff;font-weight:700}
+.st.wait{color:var(--sun);border-color:#EBCF8F;background:var(--sun-soft)}
+.st.out{color:var(--sunset);border-color:#F3BFA4;background:var(--sunset-soft)}
+.empty-row{padding:14px 16px;color:var(--faint);font-size:13px}
+.mini .empty-row{padding-left:0}
+
+/* timeline */
+.tl{padding:14px 16px 10px;border-top:1px solid var(--dune2)}
+.mini .tl{padding-left:0;padding-right:0;border-top:0}
+.tl:first-child{border-top:0}
+.tl-head{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gulf-deep);margin-bottom:10px}
+.tl-head.out{color:var(--sunset)}
+.tl-strip{position:relative;width:100%}
+.tl-axis{position:absolute;left:0;right:0;bottom:0;height:28px;border-top:2px solid var(--dune)}
+.tl-tick{position:absolute;top:-2px;width:1px;height:7px;background:var(--dune)}
+.tl-tick span{position:absolute;top:9px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:10px;color:var(--faint);white-space:nowrap}
+.tl-tick.first span{left:0;transform:none}
+.tl-tick.last span{left:auto;right:0;transform:none}
+.tl-chip{position:absolute;font-family:var(--mono);font-size:11px;letter-spacing:.03em;padding:3px 7px;border-radius:6px;background:var(--shell);border:1.5px solid var(--gulf);white-space:nowrap;color:var(--ink);line-height:1.3}
+.tl-chip.out{border-color:var(--sunset)}
+.tl-dot{position:absolute;bottom:24px;width:9px;height:9px;border-radius:50%;background:var(--gulf);border:2px solid #fff;transform:translateX(-50%);box-shadow:0 0 0 1px var(--gulf)}
+.tl-dot.out{background:var(--sunset);box-shadow:0 0 0 1px var(--sunset)}
+
+/* spots */
+.spot{display:block;padding:12px 16px;border-top:1px solid var(--dune2)}
+.spot:first-child{border-top:0}
+.spot .n{font-weight:600;font-size:15px}
+.spot .w{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gulf-deep);margin:2px 0 3px;line-height:1.5}
+.spot .a{color:var(--muted);font-size:13px;line-height:1.5}
+.spot .a .dv{color:var(--faint)}
+
+/* rooms */
+.rooms{display:grid;gap:14px}
+@media(min-width:640px){.rooms{grid-template-columns:1fr 1fr}}
+.room{padding:14px 16px 16px}
+.room-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:10px}
+.room-n{font-family:var(--display);font-weight:800;font-size:22px;text-transform:uppercase;letter-spacing:.02em;line-height:1}
+.room-c{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.room-c b{color:var(--gulf-deep)}
+.beds{display:grid;gap:12px}
+.beds.two{grid-template-columns:1fr 1fr}
+.bed{display:block;width:100%;max-width:200px;height:auto;margin:0 auto}
+.bedlbl{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin:4px 0 6px;text-align:center}
+.slots{display:grid;gap:6px}
+.slot{font-size:13px;font-weight:600;padding:7px 9px;border-radius:8px;background:var(--gulf-soft);color:var(--gulf-deep);text-align:center;line-height:1.2}
+.slot.open{background:transparent;border:1.5px dashed var(--dune);color:var(--faint);font-weight:500}
+.cap{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:4px 0 10px}
+.cell{width:26px;height:14px;border-radius:4px;background:var(--gulf)}
+.cell.open{background:transparent;border:1.5px dashed var(--faint)}
+.cell.over{background:var(--sunset-soft);border:1.5px solid var(--sunset)}
+.caplbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-left:6px}
+.caplbl b{color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.pchip{font-size:13px;font-weight:600;padding:7px 10px;border-radius:999px;border:1.5px dashed var(--sunset);color:var(--sunset);background:#fff}
+
+.foot{margin-top:40px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);text-align:center}
+
+@media print{
+  .nav{display:none}
+  .hero{padding:26px 0 40px}
+  .panel,.day,.room,.tl,.spot,.row{break-inside:avoid;box-shadow:none}
+  section{margin-top:22px}
+  .page{padding-bottom:0}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Wardogg's</p>
+    <h1 class="title">Bachelorpalooza</h1>
+    <p class="sub"><b>Naples, FL</b> · Thursday 3/4 – Sunday 3/7, 2027 · The Vineyards</p>
+    <div class="meta"><span class="chip sun" id="countdown">—</span><span id="route">→ RSW</span></div>
+  </div>
+  <svg class="wave" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0,22 C240,44 480,0 720,22 C960,44 1200,0 1440,22 L1440,40 L0,40 Z" fill="#FAF5EC"/></svg>
+</header>
+
+<nav class="nav" aria-label="Sections"><div class="wrap"><ul>
+  <li><button type="button" data-go="info">Basics</button></li>
+  <li><button type="button" data-go="plan">Plan</button></li>
+  <li><button type="button" data-go="arrivals">Arrivals</button></li>
+  <li><button type="button" data-go="rooms">Rooms</button></li>
+</ul></div></nav>
+
+<div class="wrap">
+
+<section id="info">
+  <div class="sec-h"><h2>The basics</h2><span class="note">Fly into RSW</span></div>
+  <div class="panel kv">
+    <div class="k">House</div>
+    <div class="v">5836 Jameson Dr, Naples, FL 34119<a class="lnk" href="https://maps.apple.com/?daddr=5836%20Jameson%20Dr%2C%20Naples%2C%20FL%2034119&dirflg=d" target="_blank" rel="noopener">Apple Maps ↗</a>
+      <small>The Maxfield family home inside The Vineyards, a gated community in North Naples.</small>
+      <span class="gate">At the gate, tell the guard you're visiting Charles Maxfield.</span></div>
+    <div class="k">Airport</div>
+    <div class="v">RSW · Southwest Florida International<small>30 min from the house. Rental car or rideshare both work.</small></div>
+    <div class="k">Dates</div>
+    <div class="v">Thursday, 3/4, evening through Sunday, 3/7, morning<small>Arrive and leave whenever works for you within that window.</small></div>
+    <div class="k">Host</div>
+    <div class="v">Charles Maxfield</div>
+    <div class="k">RSVP</div>
+    <div class="v"><a href="https://docs.google.com/forms/d/e/1FAIpQLSenmlLex1LHc-1kHQ7u-yY0Er1_lKW_EAnr-R-XBrZZKELXwA/viewform" target="_blank" rel="noopener">Flight confirmation form ↗</a><small>Submit your flight details there. Arrival times below update as confirmations come in.</small></div>
+  </div>
+</section>
+
+<section id="plan">
+  <div class="sec-h"><h2>The plan</h2><span class="note">Times are estimates</span></div>
+  <div class="days" id="days"></div>
+  <div class="sub-h">Spots · drive time from the house</div>
+  <div class="panel" id="spots"></div>
+</section>
+
+<section id="arrivals">
+  <div class="sec-h"><h2>Arrivals</h2><span class="note">Landing + 45 min = at the house</span></div>
+  <div class="panel">
+    <div id="timeline"></div>
+    <div id="board"></div>
+  </div>
+</section>
+
+<section id="rooms">
+  <div class="sec-h"><h2>Rooms</h2><span class="note" id="roomnote"></span></div>
+  <div class="rooms" id="roomcards"></div>
+  <div class="sub-h" id="bedsh">Needs a bed</div>
+  <div class="panel room" id="unassigned"></div>
+</section>
+
+<footer class="foot">Wardogg's Bachelorpalooza · Naples, FL · 3/4–3/7/2027 · Updated 8/20/26</footer>
+</div>
+</div>
+
+<script>
+(function(){
+'use strict';
+const BUFFER_MIN=45;      // landing to house: 15 min to deboard + get a ride, 30 min drive
+const LEAVE_BEFORE=90;    // leave the house this many minutes before a departing flight
+const $=(s,r)=>(r||document).querySelector(s);
+const el=(t,c,txt)=>{const e=document.createElement(t);if(c)e.className=c;if(txt!=null)e.textContent=txt;return e;};
+const pad=n=>String(n).padStart(2,'0');
+const DOW=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const DOWL=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/* ---------- data ---------- */
+const PEOPLE=[
+  {name:'Warren Lightfoot',tag:'Groom',home:'TX',arr:['2027-03-04','19:45','Southwest 2269','DAL'],dep:['2027-03-07','17:40','Southwest 4563']},
+  {name:'Jackson Lightfoot',home:'TX',phone:'205.937.8639'},
+  {name:'Mac Harris',home:'NC',phone:'205.218.9486'},
+  {name:'James Crenshaw',home:'AL',phone:'205.790.0849'},
+  {name:'Anderson Smith',home:'SC',phone:'205.789.2183'},
+  {name:'Charles Maxfield',tag:'Host',home:'TX',phone:'919.599.7285',arr:['2027-03-03','20:30','','']},
+  {name:'Mike Sehlinger',home:'TX',phone:'502.554.1913'},
+  {name:'Wade Schaller',home:'TX',phone:'479.426.7566'},
+  {name:'Hays Cape',home:'TN',phone:'731.676.7773'},
+  {name:'Collin Risinger',home:'CT',phone:'860.918.8140'},
+  {name:'Dan Yeh',home:'WI',phone:'601.566.4063'}
+];
+
+const DAYS=[
+  {id:'thu',date:'2027-03-04',title:'Arrival day',lines:[
+    'Afternoon | Crew rolls in |',
+    '8:30 PM | Grill out at the house |'
+  ]},
+  {id:'fri',date:'2027-03-05',title:'Golf day',lines:[
+    'Morning | Pool at the house |',
+    '11:15 AM | Leave the house for the club |',
+    '~ 5 min drive from House to Vineyards Country Club',
+    '11:30 AM–12:30 PM | Lunch at the club · Vineyards |',
+    '1:00 PM–5:30 PM | Golf · 18 holes at Vineyards | Three foursomes, tee times about 10 min apart. Booked through the club.',
+    '~ 5 min drive from Vineyards Country Club to House',
+    '5:45 PM–6:45 PM | Pool + downtime |',
+    '6:45 PM | Leave the house for dinner |',
+    '~ 30 min drive from House to Tommy Bahama, Old Naples',
+    '7:15 PM–8:45 PM | Dinner · Tommy Bahama |',
+    '~ 25 min drive from Tommy Bahama to Seed to Table',
+    '9:15 PM–10:15 PM | Seed to Table · upstairs bar |',
+    '~ 15 min drive from Seed to Table to House',
+    '10:30 PM | Back at the house | Hot tub and cigars.'
+  ]},
+  {id:'sat',date:'2027-03-06',title:'Boat day',lines:[
+    'Morning | Load up | Towels, sunscreen, cooler, fishing gear.',
+    '8:30 AM | Leave the house for the marina | Naples Bay Resort or On The Pontoon Boat, to be confirmed with Charles. Both are on Naples Bay.',
+    '~ 30 min drive from House to the marina',
+    '9:00 AM | Check in at the marina | Full-day pontoon rental. Out by 9:30 AM, due back by 4:30 PM.',
+    '9:30 AM | Boat out | Naples Bay to Gordon Pass, then south along Keewaydin Island toward Marco. Fish or cruise on the way down.',
+    '~ 60 min by boat from Naples Bay to Snook Inn, Marco Island',
+    '12:00 PM–1:30 PM | Lunch · Snook Inn | Boat-up dock on the Marco River.',
+    '~ 15 min by boat from Snook Inn to Keewaydin Island south tip',
+    '1:45 PM–3:15 PM | Keewaydin Island | Anchor off the south sandbar.',
+    '~ 45 min by boat from Keewaydin Island to Naples Bay',
+    '4:00 PM | Boat back at the marina | Due back by 4:30 PM.',
+    '~ 30 min drive from the marina to House',
+    '4:45 PM–5:45 PM | Pool + downtime |',
+    '6:00 PM | Leave the house for dinner |',
+    '~ 20 min drive from House to The Turtle Club, Vanderbilt Beach',
+    '6:20 PM | Drinks on the sand · The Turtle Club | Sunset is about 6:30 PM.',
+    '6:45 PM–8:30 PM | Dinner · The Turtle Club | On the beach at Vanderbilt. Reservation for 11. Kitchen closes at 9 PM.',
+    '~ 5 min drive from The Turtle Club to Mercato',
+    '9:00 PM | Blue Martini + Mercato | Blue Martini is open until 2 AM. The rest of Mercato is within walking distance.',
+    '~ 15 min drive from Mercato to House'
+  ]},
+  {id:'sun',date:'2027-03-07',title:'Spa + departures',lines:[
+    'Morning | Easy morning | Pool at the house.',
+    '9:45 AM | Leave the house for the club |',
+    '~ 5 min drive from House to Vineyards Country Club',
+    '10:00 AM–11:00 AM | Spa · Vineyards Wellness Center | Hot tub, steam room, showers, and pool. Bring swim trunks.',
+    '11:00 AM–12:30 PM | Piano brunch buffet · Vineyards main dining room | Walk over from the spa.',
+    '~ 5 min drive from Vineyards Country Club to House',
+    'Afternoon | Airport runs | Leave the house about 1 hr 30 min before your flight. RSW is 30 min away. Heading-out times are listed under Arrivals.'
+  ]}
+];
+
+const SPOTS=[
+  {n:'Vineyards Country Club',a:'400 Vineyards Blvd, Naples, FL 34119',drive:'5 min from the house',keys:['Vineyards']},
+  {n:'Tommy Bahama Restaurant & Bar',a:'1220 3rd St S, Naples, FL 34102',drive:'30 min from the house',keys:['Tommy Bahama']},
+  {n:'Seed to Table',a:'4835 Immokalee Rd, Naples, FL 34110',drive:'12 min from the house',keys:['Seed to Table']},
+  {n:'Naples Bay Resort Boat Rentals',a:'1500 5th Ave S, Naples, FL 34102',drive:'30 min from the house',when:'Sat 3/6 · 9:00 AM · option 1'},
+  {n:'Naples Boat Rentals by On The Pontoon Boat',a:'3200 Bayshore Dr, Naples, FL 34112',drive:'30 min from the house',when:'Sat 3/6 · 9:00 AM · option 2'},
+  {n:'Snook Inn',a:'1215 Bald Eagle Dr, Marco Island, FL 34145',drive:'by boat · about 60 min from Naples Bay',keys:['Snook Inn']},
+  {n:'Keewaydin Island',a:'South tip, boat only',drive:'by boat · 15 min from Snook Inn',keys:['Keewaydin'],q:'Keewaydin Island, FL'},
+  {n:'The Turtle Club',a:'9225 Gulf Shore Dr, Naples, FL 34108',drive:'20 min from the house',keys:['Turtle Club']},
+  {n:'Mercato',a:'9110 Strada Pl, Naples, FL 34108',drive:'15 min from the house',keys:['Mercato']},
+  {n:'Blue Martini',a:'9114 Strada Pl #12105, Naples, FL 34108',drive:'15 min from the house',keys:['Blue Martini']}
+];
+
+const ROOMS=[
+  {name:'Master Bedroom',beds:[{type:'King',slots:['Warren Lightfoot','Jackson Lightfoot']}]},
+  {name:"Charles' Room",beds:[{type:'King',slots:['Charles Maxfield','Dan Yeh']},{type:'Air mattress',slots:['Wade Schaller']}]},
+  {name:"Charles' Brother's Room",beds:[{type:'Queen',slots:['Mac Harris','Anderson Smith']},{type:'Queen',slots:['Hays Cape','Collin Risinger']}]},
+  {name:'Kitchen Sectional',beds:[{type:'Sectional',slots:['James Crenshaw']}]},
+  {name:'Living Room Couch',beds:[{type:'Couch',slots:['Mike Sehlinger']}]}
+];
+
+/* ---------- helpers ---------- */
+function toDate(d,t){ if(!d||!t) return null; const x=new Date(d+'T'+t+':00'); return isNaN(x.getTime())?null:x; }
+function landing(p){ return p.arr?toDate(p.arr[0],p.arr[1]):null; }
+function etaOf(p){ const b=landing(p); return b?new Date(b.getTime()+BUFFER_MIN*60000):null; }
+function depOf(p){ return p.dep?toDate(p.dep[0],p.dep[1]):null; }
+function leaveOf(p){ const d=depOf(p); if(!d) return null; const t=new Date(d.getTime()-LEAVE_BEFORE*60000); t.setMinutes(Math.floor(t.getMinutes()/15)*15,0,0); return t; }
+function fmtTime(d){ let h=d.getHours(); const m=d.getMinutes(); const ap=h>=12?'PM':'AM'; h=h%12||12; return h+':'+pad(m)+' '+ap; }
+function dayKey(d){ return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()); }
+function keyDate(k){ const p=k.split('-').map(Number); return new Date(p[0],p[1]-1,p[2]); }
+function md(d){ return (d.getMonth()+1)+'/'+d.getDate(); }
+function dayLong(k){ const d=keyDate(k); return DOWL[d.getDay()]+' '+md(d); }
+function dayShort(k){ const d=keyDate(k); return DOW[d.getDay()]+' '+md(d); }
+function hourLabel(h){ h=((h%24)+24)%24; const ap=h>=12?'p':'a'; let x=h%12; if(x===0) x=12; return x+ap; }
+function shortName(n){ return (n||'').trim().split(/\s+/)[0]; }
+function telHref(ph){ return 'tel:'+String(ph).replace(/[^\d+]/g,''); }
+function amap(sp){ return sp.q?'https://maps.apple.com/?q='+encodeURIComponent(sp.q):'https://maps.apple.com/?daddr='+encodeURIComponent(sp.n+', '+sp.a)+'&dirflg=d'; }
+
+function parseLine(l){
+  l=(l||'').trim();
+  if(/^~/.test(l)) return {kind:'travel',text:l.replace(/^~\s*/,'')};
+  const parts=l.split('|').map(x=>x.trim());
+  if(parts.length===1) return {kind:'block',time:'',end:'',title:parts[0],note:''};
+  let time=parts[0], end='';
+  const m=time.split(/\s*[\u2013\u2014-]\s*/);
+  if(m.length>1&&/\d/.test(m[1])){ time=m[0]; end=m[1]; }
+  return {kind:'block',time,end,title:parts[1]||'',note:parts.slice(2).join(' | ')};
+}
+const isClock=x=>/^\d{1,2}(:\d{2})?\s*(am|pm)$/i.test((x||'').trim());
+
+/* ---------- arrivals model ---------- */
+function splitArrivals(){
+  const withEta=[], waiting=[], outs=[];
+  PEOPLE.forEach(p=>{ const e=etaOf(p); if(e) withEta.push({p,eta:e}); else waiting.push(p); const l=leaveOf(p); if(l) outs.push({p,leave:l,dep:depOf(p)}); });
+  withEta.sort((a,b)=>a.eta-b.eta); outs.sort((a,b)=>a.leave-b.leave);
+  waiting.sort((a,b)=>(a.name||'').localeCompare(b.name||''));
+  const groups=new Map();
+  withEta.forEach(x=>{ const k=dayKey(x.eta); if(!groups.has(k)) groups.set(k,[]); groups.get(k).push(x); });
+  const outGroups=new Map();
+  outs.forEach(x=>{ const k=dayKey(x.leave); if(!outGroups.has(k)) outGroups.set(k,[]); outGroups.get(k).push(x); });
+  return {withEta,waiting,groups,outs,outGroups};
+}
+
+function subHtml(p,mode){
+  const parts=[];
+  if(mode==='out'){ parts.push('Leave the house'); if(p.dep&&p.dep[2]) parts.push(esc(p.dep[2])+' departs '+fmtTime(depOf(p))); else parts.push('flight departs '+fmtTime(depOf(p))); }
+  else{
+    const land=landing(p);
+    if(!land) parts.push('No flight yet');
+    else{ let s='Lands '+fmtTime(land); if(p.arr[2]) s+=' · '+esc(p.arr[2]); if(p.arr[3]) s+=' from '+esc(p.arr[3]); parts.push(s); }
+  }
+  if(p.home) parts.push(esc(p.home));
+  if(p.phone) parts.push('<a href="'+telHref(p.phone)+'">'+esc(p.phone)+'</a>');
+  return parts.join(' · ');
+}
+
+function rowEl(p,when,mode){
+  const r=el('div','row');
+  const eta=el('div','eta');
+  if(when) eta.textContent=fmtTime(when); else { eta.textContent='––:––'; eta.classList.add('none'); }
+  if(mode==='out') eta.classList.add('out');
+  const who=el('div','who');
+  const nm=el('div','nm',p.name); if(p.tag) nm.appendChild(el('span','tag',p.tag));
+  const sub=el('div','sub'); sub.innerHTML=subHtml(p,mode);
+  who.append(nm,sub);
+  const st=el('div','st');
+  if(mode==='out'){ st.textContent='Heading out'; st.classList.add('out'); }
+  else if(!when){ st.textContent='Waiting'; st.classList.add('wait'); }
+  else { st.textContent='Locked'; st.classList.add('locked'); }
+  r.append(eta,who,st);
+  return r;
+}
+
+function renderStrip(wrap,k,items,opts){
+  opts=opts||{};
+  const hrs=items.map(i=>i.t.getHours()+i.t.getMinutes()/60);
+  let start=Math.max(0,Math.floor(Math.min.apply(null,hrs))-1);
+  let end=Math.min(24,Math.ceil(Math.max.apply(null,hrs))+1);
+  if(end-start<6){ end=Math.min(24,start+6); if(end-start<6) start=Math.max(0,end-6); }
+  const span=(end-start)||1, step=span>10?2:1;
+  const box=el('div','tl');
+  const head=el('div','tl-head'+(opts.out?' out':''),(opts.label||dayLong(k)));
+  box.appendChild(head);
+  const strip=el('div','tl-strip'); box.appendChild(strip); wrap.appendChild(box);
+  const axis=el('div','tl-axis'); strip.appendChild(axis);
+  for(let h=start;h<=end;h+=step){
+    const tk=el('div','tl-tick'); tk.style.left=((h-start)/span*100)+'%';
+    if(h===start) tk.classList.add('first'); if(h+step>end) tk.classList.add('last');
+    tk.appendChild(el('span',null,hourLabel(h))); axis.appendChild(tk);
+  }
+  const W=strip.clientWidth||320, laneEnd=[], placed=[];
+  items.forEach((it,idx)=>{
+    const xPct=(hrs[idx]-start)/span*100;
+    const chip=el('div','tl-chip'+(opts.out?' out':''),shortName(it.p.name)); chip.title=it.p.name+' · '+fmtTime(it.t); strip.appendChild(chip);
+    const w=chip.offsetWidth||90, wPct=Math.min(100,w/W*100);
+    const leftPct=Math.max(0,Math.min(100-wPct,xPct-wPct/2));
+    const leftPx=leftPct/100*W;
+    let lane=0; while(laneEnd[lane]!==undefined&&laneEnd[lane]+6>leftPx) lane++;
+    laneEnd[lane]=leftPx+w; chip.style.left=leftPct+'%'; placed.push({chip,lane});
+    const dot=el('div','tl-dot'+(opts.out?' out':'')); dot.style.left=xPct+'%'; strip.appendChild(dot);
+  });
+  const L=Math.max(1,laneEnd.length);
+  placed.forEach(o=>{ o.chip.style.top=((L-1-o.lane)*26)+'px'; });
+  strip.style.height=(L*26+38)+'px';
+}
+
+/* ---------- render ---------- */
+function renderCountdown(){
+  const now=new Date(), start=new Date(2027,2,4), end=new Date(2027,2,8);
+  let t;
+  if(now<start){ const d=Math.ceil((start-now)/864e5); t='T-'+d+' day'+(d===1?'':'s'); }
+  else if(now<end) t='Go time';
+  else t='In the books';
+  $('#countdown').textContent=t;
+}
+function renderRoute(){
+  const set=new Set(); PEOPLE.forEach(p=>{ if(p.home) set.add(p.home.toUpperCase()); });
+  $('#route').textContent=Array.from(set).sort().join(' · ')+'  →  RSW';
+}
+function renderBlocks(host,lines){
+  const list=el('div','blocks');
+  lines.forEach(raw=>{
+    const it=parseLine(raw);
+    if(it.kind==='travel'){ const r=el('div','trv'); r.appendChild(el('div')); r.appendChild(el('div','tx',it.text)); list.appendChild(r); return; }
+    const r=el('div','blk'+(/^leave the house/i.test(it.title)?' leave':'')); const tm=el('div','tm');
+    if(isClock(it.time)){ tm.textContent=it.time.replace(/\s+/g,' ').toUpperCase(); if(it.end) tm.appendChild(el('small',null,'to '+it.end.toUpperCase())); }
+    else { tm.classList.add('lbl'); tm.textContent=it.time; }
+    const body=el('div'); const tt=el('div','tt',it.title); if(/\bTBD\b/i.test(it.title)) tt.classList.add('tbd'); body.appendChild(tt);
+    if(it.note) body.appendChild(el('div','nt',it.note));
+    r.append(tm,body); list.appendChild(r);
+  });
+  host.appendChild(list);
+}
+function renderDays(){
+  const host=$('#days'); host.innerHTML='';
+  const A=splitArrivals();
+  DAYS.forEach(d=>{
+    const card=el('div','panel day '+d.id);
+    const dt=keyDate(d.date);
+    const h=el('div','day-h');
+    const dn=el('div','day-d',DOWL[dt.getDay()]); dn.appendChild(el('span',null,md(dt)));
+    h.append(dn,el('div','day-t',d.title)); card.appendChild(h);
+    renderBlocks(card,d.lines);
+    host.appendChild(card);
+    if(d.id==='thu'){
+      const mini=el('div','mini'); card.appendChild(mini);
+      const keys=['2027-03-03','2027-03-04','2027-03-05'];
+      let any=false;
+      keys.forEach(k=>{ const items=(A.groups.get(k)||[]).map(x=>({p:x.p,t:x.eta})); if(!items.length) return; any=true; renderStrip(mini,k,items,{label:dayLong(k)+' · at the house'}); });
+      if(!any) mini.appendChild(el('div','empty-row','Arrival times will appear here as flights are confirmed.'));
+    }
+  });
+}
+function whenFor(sp){
+  if(sp.when) return sp.when;
+  const out=[];
+  DAYS.forEach(d=>{ d.lines.forEach(raw=>{ const it=parseLine(raw); if(it.kind!=='block') return;
+    if((sp.keys||[]).some(k=>it.title.toLowerCase().includes(k.toLowerCase()))){ let w=dayShort(d.date); if(it.time) w+=' · '+(isClock(it.time)?it.time.toUpperCase():it.time); out.push(w); }
+  }); });
+  return out.slice(0,2).join('  ·  ')||'Not scheduled';
+}
+function renderSpots(){
+  const h=$('#spots'); h.innerHTML='';
+  SPOTS.forEach(sp=>{
+    const d=el('div','spot');
+    const a=el('div','a',sp.a+' · ');
+    a.appendChild(el('span','dv',sp.drive));
+    const l=el('a','lnk','Apple Maps ↗'); l.href=amap(sp); l.target='_blank'; l.rel='noopener';
+    a.appendChild(l);
+    d.append(el('div','n',sp.n),el('div','w',whenFor(sp)),a);
+    h.appendChild(d);
+  });
+}
+function renderArrivals(){
+  const A=splitArrivals();
+  const tl=$('#timeline'); tl.innerHTML='';
+  A.groups.forEach((items,k)=>renderStrip(tl,k,items.map(x=>({p:x.p,t:x.eta})),{label:'At the house · '+dayLong(k)}));
+  A.outGroups.forEach((items,k)=>renderStrip(tl,k,items.map(x=>({p:x.p,t:x.leave})),{label:'Leaving the house · '+dayLong(k),out:true}));
+  const board=$('#board'); board.innerHTML='';
+  A.groups.forEach((items,k)=>{ board.appendChild(el('div','grp','Arriving '+dayLong(k))); items.forEach(x=>board.appendChild(rowEl(x.p,x.eta))); });
+  if(A.waiting.length){ board.appendChild(el('div','grp wait','Waiting on flights · '+A.waiting.length)); A.waiting.forEach(p=>board.appendChild(rowEl(p,null))); }
+  A.outGroups.forEach((items,k)=>{ board.appendChild(el('div','grp out','Heading out '+dayLong(k))); items.forEach(x=>board.appendChild(rowEl(x.p,x.leave,'out'))); });
+}
+
+/* rooms */
+function bedSvg(bed){
+  const n=bed.slots.length, w=160, h=96;
+  let s='<svg class="bed" viewBox="0 0 '+w+' '+h+'" aria-hidden="true">';
+  const pillow=(x,y,pw,filled)=>'<rect x="'+x+'" y="'+y+'" width="'+pw+'" height="14" rx="6" fill="'+(filled?'var(--gulf)':'none')+'" stroke="'+(filled?'var(--gulf)':'var(--faint)')+'" stroke-width="2"'+(filled?'':' stroke-dasharray="4 3"')+'/>';
+  if(bed.type==='Sectional'){
+    s+='<rect x="10" y="28" width="'+(w-20)+'" height="20" rx="7" fill="#F1EADB" stroke="var(--dune)" stroke-width="2"/>';
+    s+='<rect x="10" y="46" width="'+(w-20)+'" height="24" rx="8" fill="#FBF7EE" stroke="var(--dune)" stroke-width="2"/>';
+    s+='<rect x="'+(w-56)+'" y="46" width="46" height="44" rx="8" fill="#FBF7EE" stroke="var(--dune)" stroke-width="2"/>';
+    s+='<rect x="4" y="40" width="12" height="32" rx="5" fill="#F1EADB" stroke="var(--dune)" stroke-width="2"/>';
+    s+=pillow(30,32,44,!!bed.slots[0]);
+  } else if(bed.type==='Air mattress'){
+    s+='<rect x="18" y="24" width="'+(w-36)+'" height="'+(h-36)+'" rx="14" fill="#FBF7EE" stroke="var(--dune)" stroke-width="2"/>';
+    for(let y=48;y<h-20;y+=10) s+='<line x1="24" y1="'+y+'" x2="'+(w-24)+'" y2="'+y+'" stroke="var(--dune2)" stroke-width="2"/>';
+    s+='<circle cx="'+(w-30)+'" cy="'+(h-24)+'" r="3" fill="var(--dune)"/>';
+    s+=pillow(w/2-24,31,48,!!bed.slots[0]);
+  } else if(bed.type==='Couch'){
+    s+='<rect x="14" y="30" width="'+(w-28)+'" height="22" rx="8" fill="#F1EADB" stroke="var(--dune)" stroke-width="2"/>';
+    s+='<rect x="10" y="50" width="'+(w-20)+'" height="26" rx="9" fill="#FBF7EE" stroke="var(--dune)" stroke-width="2"/>';
+    s+='<rect x="4" y="44" width="14" height="34" rx="6" fill="#F1EADB" stroke="var(--dune)" stroke-width="2"/>';
+    s+='<rect x="'+(w-18)+'" y="44" width="14" height="34" rx="6" fill="#F1EADB" stroke="var(--dune)" stroke-width="2"/>';
+    const filled=!!bed.slots[0];
+    s+='<rect x="'+(w/2-22)+'" y="34" width="44" height="14" rx="6" fill="'+(filled?'var(--gulf)':'none')+'" stroke="'+(filled?'var(--gulf)':'var(--faint)')+'" stroke-width="2"'+(filled?'':' stroke-dasharray="4 3"')+'/>';
+  } else {
+    s+='<rect x="14" y="6" width="'+(w-28)+'" height="12" rx="4" fill="#E6DCCB"/>';
+    s+='<rect x="18" y="18" width="'+(w-36)+'" height="'+(h-26)+'" rx="10" fill="#FBF7EE" stroke="var(--dune)" stroke-width="2"/>';
+    s+='<rect x="22" y="50" width="'+(w-44)+'" height="'+(h-62)+'" rx="8" fill="var(--gulf-soft)"/>';
+    const inner=w-36-16, pw=(inner-(n-1)*8)/n;
+    bed.slots.forEach((who,i)=>{ const x=18+8+i*(pw+8); const filled=!!who;
+      s+='<rect x="'+x+'" y="26" width="'+pw+'" height="16" rx="6" fill="'+(filled?'var(--gulf)':'none')+'" stroke="'+(filled?'var(--gulf)':'var(--faint)')+'" stroke-width="2"'+(filled?'':' stroke-dasharray="4 3"')+'/>'; });
+  }
+  return s+'</svg>';
+}
+function renderRooms(){
+  const host=$('#roomcards'); host.innerHTML='';
+  let slots=0, filled=0; const assigned=new Set();
+  ROOMS.forEach(r=>{
+    const card=el('div','panel room');
+    const cap=r.beds.reduce((a,b)=>a+b.slots.length,0);
+    const used=r.beds.reduce((a,b)=>a+b.slots.filter(Boolean).length,0);
+    slots+=cap; filled+=used;
+    const h=el('div','room-h'); h.appendChild(el('div','room-n',r.name));
+    const c=el('div','room-c'); c.innerHTML='<b>'+used+'</b> of '+cap+(cap===1?' spot':' spots'); h.appendChild(c); card.appendChild(h);
+    const beds=el('div','beds'+(r.beds.length>1?' two':''));
+    r.beds.forEach(b=>{
+      const bx=el('div'); bx.innerHTML=bedSvg(b);
+      bx.appendChild(el('div','bedlbl',b.type+' · '+b.slots.length+(b.slots.length===1?' spot':' spots')));
+      const sl=el('div','slots');
+      b.slots.forEach(who=>{ if(who){ assigned.add(who); sl.appendChild(el('div','slot',who)); } else sl.appendChild(el('div','slot open','Open')); });
+      bx.appendChild(sl); beds.appendChild(bx);
+    });
+    card.appendChild(beds); host.appendChild(card);
+  });
+  const un=PEOPLE.filter(p=>!assigned.has(p.name));
+  $('#roomnote').textContent=slots+' spots · '+PEOPLE.length+' people';
+  const u=$('#unassigned'); u.innerHTML='';
+  const cap=el('div','cap');
+  for(let i=0;i<slots;i++) cap.appendChild(el('div','cell'+(i<filled?'':' open')));
+  for(let i=slots;i<PEOPLE.length;i++) cap.appendChild(el('div','cell over'));
+  const lbl=el('div','caplbl'); lbl.innerHTML='<b>'+filled+'</b> assigned · <b>'+(slots-filled)+'</b> open · <b>'+Math.max(0,PEOPLE.length-slots)+'</b> over capacity'; cap.appendChild(lbl);
+  u.appendChild(cap);
+  $('#bedsh').style.display=un.length?'':'none'; u.style.display=un.length?'':'none';
+  if(un.length){ const chips=el('div','chips'); un.forEach(p=>chips.appendChild(el('div','pchip',p.name))); u.appendChild(chips); }
+}
+
+function fitTitle(){
+  const t=$('.title'); if(!t||!t.parentElement) return;
+  t.style.fontSize='';
+  const cs=getComputedStyle(t.parentElement); const max=t.parentElement.clientWidth-parseFloat(cs.paddingLeft||0)-parseFloat(cs.paddingRight||0); if(!max) return;
+  let fs=parseFloat(getComputedStyle(t).fontSize)||40, guard=0;
+  while(t.scrollWidth>max&&fs>20&&guard<80){ fs-=1; t.style.fontSize=fs+'px'; guard++; }
+}
+function render(){ renderRoute(); renderDays(); renderSpots(); renderArrivals(); renderRooms(); fitTitle(); }
+
+document.querySelectorAll('.nav [data-go]').forEach(b=>b.addEventListener('click',()=>{ const t=document.getElementById(b.getAttribute('data-go')); if(t) t.scrollIntoView({behavior:'smooth',block:'start'}); }));
+let rt, lastW=0;
+function relayout(){ clearTimeout(rt); rt=setTimeout(()=>{ const w=document.documentElement.clientWidth; if(w===lastW) return; lastW=w; fitTitle(); renderDays(); renderArrivals(); },120); }
+window.addEventListener('resize',relayout);
+if(window.ResizeObserver){ new ResizeObserver(relayout).observe(document.documentElement); }
+if(document.fonts&&document.fonts.load){ document.fonts.load('800 40px "Barlow Condensed"').then(fs=>{ if(fs&&fs.length) document.documentElement.classList.add('cond'); fitTitle(); renderDays(); renderArrivals(); }).catch(()=>{}); }
+render(); lastW=document.documentElement.clientWidth; renderCountdown(); setInterval(renderCountdown,60000);
+})();
+</script>
+</body>
+</html>
