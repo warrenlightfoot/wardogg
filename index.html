@@ -13,6 +13,7 @@
 <meta name="theme-color" content="#2493CE">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Wardogg">
 <link rel="apple-touch-icon" href="preview.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,7 +40,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .page{padding-bottom:calc(48px + env(safe-area-inset-bottom))}
 
 /* hero */
-.hero{position:relative;overflow:hidden;color:#fff;background:#1B4C9C;padding:32px 0 64px;min-height:330px}
+.hero{position:relative;overflow:hidden;color:#fff;background:#1B4C9C;padding:calc(32px + env(safe-area-inset-top)) 0 64px;min-height:330px}
 .scene{position:absolute;inset:0;width:100%;height:100%;display:block}
 .hero .wrap{position:relative;z-index:1}
 .title{text-shadow:0 2px 0 rgba(10,38,80,.28)}
@@ -55,14 +56,15 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .chip.sun{background:#FFC9A3;color:#4A2A15;border-color:transparent;font-weight:700}
 
 /* nav */
-.nav{position:sticky;top:0;z-index:20;background:rgba(250,245,236,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--dune)}
+.nav{position:sticky;top:0;z-index:20;padding-top:env(safe-area-inset-top);background:rgba(250,245,236,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--dune)}
 .nav ul{list-style:none;margin:0;padding:0;display:flex;gap:24px;overflow-x:auto;scrollbar-width:none}
 .nav ul::-webkit-scrollbar{display:none}
 .nav button{display:block;padding:13px 0;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
 .nav button:hover{color:var(--gulf-deep)}
 
 /* sections */
-section{margin-top:36px;scroll-margin-top:56px}
+section{margin-top:36px;scroll-margin-top:calc(56px + env(safe-area-inset-top))}
+[hidden]{display:none!important}
 .sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:0 0 12px}
 .sec-h h2{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:30px;letter-spacing:.02em;margin:0;line-height:1;white-space:nowrap}
 .note{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gulf-deep);text-align:right}
@@ -184,6 +186,21 @@ section{margin-top:36px;scroll-margin-top:56px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .pchip{font-size:13px;font-weight:600;padding:7px 10px;border-radius:999px;border:1.5px dashed var(--sunset);color:var(--sunset);background:#fff}
 
+/* add to home screen */
+.inst{padding:16px}
+.inst-h{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.inst-t{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:24px;letter-spacing:.02em;line-height:1}
+.inst-s{color:var(--muted);font-size:13px;line-height:1.45;margin-top:5px}
+.btn{flex:none;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#fff;background:var(--gulf);padding:12px 16px;border-radius:999px;white-space:nowrap;text-align:center}
+.btn:hover{background:var(--gulf-deep)}
+.steps-w{margin-top:14px;padding-top:14px;border-top:1px solid var(--dune2)}
+.inst-warn{margin:0 0 12px;padding:9px 11px;border-radius:8px;background:var(--sun-soft);color:#5C4206;font-size:13px;line-height:1.45}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:24px minmax(0,1fr);gap:10px;align-items:center;font-size:14px;line-height:1.45}
+.steps li::before{content:counter(s);font-family:var(--mono);font-size:11px;font-weight:700;color:var(--gulf-deep);background:var(--gulf-soft);border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center}
+.ico{display:inline-block;width:17px;height:17px;vertical-align:-4px;margin:0 1px;color:var(--gulf-deep)}
+@media(max-width:480px){.inst-h{flex-direction:column;align-items:stretch}}
+
 .foot{margin-top:40px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);text-align:center}
 
 @media print{
@@ -256,6 +273,26 @@ section{margin-top:36px;scroll-margin-top:56px}
   <div class="rooms" id="roomcards"></div>
   <div class="sub-h" id="bedsh">Needs a bed</div>
   <div class="panel room" id="unassigned"></div>
+</section>
+
+<section id="install" hidden>
+  <div class="panel inst">
+    <div class="inst-h">
+      <div>
+        <div class="inst-t">Add it to your Home Screen</div>
+        <div class="inst-s">Opens full screen like an app, straight from Safari. Nothing to download.</div>
+      </div>
+      <button type="button" class="btn" id="installbtn" aria-expanded="false" aria-controls="steps">Show me how</button>
+    </div>
+    <div class="steps-w" id="steps" hidden>
+      <p class="inst-warn" id="inappnote" hidden>This is an in-app browser, which can't do it. Tap ··· and choose Open in Safari, then try again.</p>
+      <ol class="steps">
+        <li><span>Tap Share <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3"/><path d="M8 7l4-4 4 4"/><path d="M8 10H6a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-2"/></svg> in Safari's toolbar, the square with the arrow.</span></li>
+        <li><span>Scroll down the list and tap <b>Add to Home Screen</b>.</span></li>
+        <li><span>Tap <b>Add</b>. It shows up next to your other apps.</span></li>
+      </ol>
+    </div>
+  </div>
 </section>
 
 <footer class="foot">Wardogg's Bachelorpalooza · Naples, FL · 3/4–3/7/2027 · Updated 8/21/26</footer>
@@ -670,7 +707,22 @@ window.addEventListener('resize',relayout);
 if(window.ResizeObserver){ new ResizeObserver(relayout).observe(document.documentElement); }
 if(document.fonts&&document.fonts.load){ document.fonts.load('800 40px "Barlow Condensed"').then(fs=>{ if(fs&&fs.length) document.documentElement.classList.add('cond'); fitTitle(); renderDays(); renderArrivals(); }).catch(()=>{}); }
 $('.hero').insertAdjacentHTML('afterbegin',buildScene());
-render(); lastW=document.documentElement.clientWidth;
+function initInstall(){
+  const sec=$('#install'); if(!sec) return;
+  const ua=navigator.userAgent||'';
+  const ios=/iPhone|iPad|iPod/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  const standalone=navigator.standalone===true||(window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches);
+  if(!ios||standalone){ sec.remove(); return; }
+  $('#inappnote').hidden=!/FBAN|FBAV|FB_IAB|Instagram|Messenger|Snapchat|musical_ly|Bytedance|LinkedIn|GSA\//i.test(ua);
+  const btn=$('#installbtn'), steps=$('#steps');
+  btn.addEventListener('click',()=>{
+    const open=steps.hidden; steps.hidden=!open;
+    btn.textContent=open?'Hide':'Show me how'; btn.setAttribute('aria-expanded',String(open));
+    if(open) steps.scrollIntoView({behavior:'smooth',block:'nearest'});
+  });
+  sec.hidden=false;
+}
+render(); initInstall(); lastW=document.documentElement.clientWidth;
 })();
 </script>
 </body>
