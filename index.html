@@ -10,21 +10,22 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="preview.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#2493CE">
+<meta name="theme-color" content="#4E1A63">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Naples Bach">
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --sand:#FAF5EC;--shell:#FFFFFF;--dune:#E6DCCB;--dune2:#F0E9DD;
-  --ink:#15324A;--muted:#5F7587;--faint:#8FA1B0;
-  --gulf:#2282C4;--gulf-deep:#1A66A0;--gulf-soft:#E3F0FA;
-  --palm:#1E9C8B;--palm-soft:#DDF3EF;
-  --sunset:#EF8A62;--sunset-soft:#FDE8DD;--sun:#D9961F;--sun-soft:#FCF0D8;
+  --sand:#E7F5F1;--shell:#FFFFFF;--dune:#C4E1DC;--dune2:#DDEEEA;
+  --ink:#0E3A44;--muted:#4D6F77;--faint:#7C9BA1;
+  --gulf:#0B8794;--gulf-deep:#086672;--gulf-soft:#D6F0EF;
+  --palm:#1E7A50;--palm-soft:#DDF3E6;
+  --sunset:#D93A63;--sunset-soft:#FFE2E8;--sun:#B26F00;--sun-soft:#FFF0D2;--mango:#F5A524;
   --display:"Barlow Condensed",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
   --body:system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
   --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
@@ -40,23 +41,23 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .page{padding-bottom:calc(48px + env(safe-area-inset-bottom))}
 
 /* hero */
-.hero{position:relative;overflow:hidden;color:#fff;background:#1B4C9C;padding:calc(32px + env(safe-area-inset-top)) 0 64px;min-height:330px}
+.hero{position:relative;overflow:hidden;color:#fff;background:#5B1A5E;padding:calc(32px + env(safe-area-inset-top)) 0 64px;min-height:330px}
 .scene{position:absolute;inset:0;width:100%;height:100%;display:block}
 .hero .wrap{position:relative;z-index:1}
-.title{text-shadow:0 2px 0 rgba(10,38,80,.28)}
-.sub{text-shadow:0 1px 0 rgba(10,38,80,.28)}
+.title{text-shadow:0 2px 0 rgba(60,10,60,.3)}
+.sub{text-shadow:0 1px 2px rgba(60,10,60,.45)}
 .wave{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:34px;display:block;z-index:1}
-.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.3em;color:#FFE3C2;text-shadow:0 1px 0 rgba(10,38,80,.3);text-transform:uppercase;margin:0 0 6px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.3em;color:#FFE3C2;text-shadow:0 1px 0 rgba(60,10,60,.3);text-transform:uppercase;margin:0 0 6px}
 .title{font-family:var(--display);font-weight:800;text-transform:uppercase;line-height:.9;letter-spacing:.005em;margin:0;font-size:clamp(30px,8.8vw,76px);white-space:nowrap;color:#fff}
 .cond .title{font-size:clamp(44px,12.4vw,104px);letter-spacing:.01em}
 .sub{margin:12px 0 0;font-size:15px;color:rgba(255,255,255,.9);line-height:1.4}
 .sub b{color:#fff;font-weight:700}
 .meta{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin-top:16px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.92)}
-.chip{display:inline-block;padding:5px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.55);background:rgba(16,60,110,.35)}
+.chip{display:inline-block;padding:5px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.55);background:rgba(60,10,60,.35)}
 .chip.sun{background:#FFC9A3;color:#4A2A15;border-color:transparent;font-weight:700}
 
 /* nav */
-.nav{position:sticky;top:0;z-index:20;padding-top:env(safe-area-inset-top);background:rgba(250,245,236,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--dune)}
+.nav{position:sticky;top:0;z-index:20;padding-top:env(safe-area-inset-top);background:rgba(231,245,241,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--dune)}
 .nav ul{list-style:none;margin:0;padding:0;display:flex;gap:24px;overflow-x:auto;scrollbar-width:none}
 .nav ul::-webkit-scrollbar{display:none}
 .nav button{display:block;padding:13px 0;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
@@ -81,38 +82,55 @@ section{margin-top:36px;scroll-margin-top:calc(56px + env(safe-area-inset-top))}
 .lnk{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-left:8px;white-space:nowrap}
 .gate{display:inline-block;margin-top:8px;padding:8px 10px;border-radius:8px;background:var(--sun-soft);color:#5C4206;font-size:13px;line-height:1.4}
 
-/* plan */
-.days{display:grid;gap:14px}
-.day{padding:16px 16px 14px}
-.day-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:6px}
-.day-d{font-family:var(--display);font-weight:800;font-size:30px;line-height:1;text-transform:uppercase;letter-spacing:.01em}
-.day-d span{color:var(--muted);font-weight:600;font-size:22px;margin-left:7px}
-.day-t{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gulf-deep);background:var(--gulf-soft);padding:5px 9px;border-radius:999px;white-space:nowrap}
-.blocks{display:block}
-.blk{display:grid;grid-template-columns:76px minmax(0,1fr);gap:2px 12px;padding:10px 0;border-top:1px solid var(--dune2)}
-.blocks>:first-child{border-top:0}
-.blk .tm{font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:-.01em;line-height:1.35;padding-top:1px;white-space:nowrap;color:var(--gulf-deep)}
-.blk .tm small{display:block;font-weight:500;color:var(--faint);font-size:10.5px}
-.blk .tm.lbl{color:var(--faint);font-weight:500;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;padding-top:3px;white-space:normal}
-.blk .tt{font-weight:600;font-size:15px;line-height:1.35}
-.blk .tt.tbd{color:var(--sun)}
-.blk.leave .tt{color:var(--sunset)}
-.blk .nt{color:var(--muted);font-size:13px;line-height:1.45;margin-top:2px}
-.blk .maps{display:flex;flex-wrap:wrap;gap:2px 14px;margin-top:3px}
-.blk .maps .lnk{margin-left:0}
-.trv{display:grid;grid-template-columns:76px minmax(0,1fr);gap:0 12px;padding:4px 0}
-.trv .tx{font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;color:var(--faint);line-height:1.4}
-.trv .tx::before{content:"↳ "}
+/* plan: one column per day; time on the left, a tile per event, a drive line between tiles */
+.days{display:grid;gap:34px}
+.dh{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+.cal{width:46px;flex:none;border-radius:10px;overflow:hidden;background:var(--shell);box-shadow:0 0 0 1px var(--dune);text-align:center}
+.cal b{display:block;background:var(--sunset);color:#fff;font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:3px 0 2px}
+.cal span{display:block;font-family:var(--display);font-weight:800;font-size:25px;line-height:1;padding:3px 0 5px}
+.dn{font-family:var(--display);font-weight:800;font-size:30px;line-height:1;text-transform:uppercase;letter-spacing:.01em}
+.dsub{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gulf-deep);margin-top:4px}
+.ev,.leg{display:grid;grid-template-columns:66px minmax(0,1fr);gap:10px}
+.ev+.ev{margin-top:8px}
+.ev .t{text-align:right;padding-top:10px;font-family:var(--mono);white-space:nowrap}
+.ev .t b{display:block;font-size:12px;font-weight:700;letter-spacing:-.01em}
+.ev .t span{display:block;font-size:10.5px;color:var(--faint);margin-top:2px}
+.ev .t.lbl b{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.b{position:relative;display:flex;gap:9px;align-items:flex-start;border-radius:12px;padding:9px 12px 10px 15px;overflow:hidden;background:var(--kb,var(--shell));box-shadow:0 0 0 1px var(--dune)}
+.b::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--kc);z-index:1}
+.b .ic{width:15px;height:15px;flex:none;margin-top:3px;color:var(--kc)}
+.b .tx{flex:1;min-width:0}
+.b .w{font-weight:700;font-size:15px;line-height:1.3}
+.b .wh{font-size:13px;line-height:1.4;color:var(--muted)}
+.b .wh a{white-space:nowrap}
+.b .nt{font-size:12.5px;line-height:1.4;color:var(--muted);margin-top:3px}
+.pic{position:relative;flex:none;align-self:stretch;width:164px;margin:-9px -12px -10px 3px;background:var(--dune2)}
+.pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.has-ph{min-height:100px}
+@media(max-width:559px){
+  .has-ph{flex-wrap:wrap;padding-top:0}
+  .has-ph .pic{order:-1;flex:0 0 calc(100% + 27px);height:118px;margin:0 -12px 9px -15px;align-self:auto}
+}
+.k-meal{--kc:var(--mango)}
+.k-drinks{--kc:var(--sunset)}
+.k-act{--kc:var(--gulf)}
+.k-home{--kc:var(--palm)}
+.k-fly{--kc:#5E7F8A}
+.k-down{--kc:#9DBDB8;--kb:repeating-linear-gradient(135deg,#F6FBFA 0 8px,#EAF4F1 8px 16px)}
+.k-down .w{color:var(--muted);font-weight:600}
+.leg{min-height:32px}
+.leg .lv{align-self:center;text-align:right;font-family:var(--mono);font-size:11px;font-weight:700;color:var(--sunset);white-space:nowrap;line-height:1.25}
+.leg .lv i{display:block;font-style:normal;font-weight:500;font-size:9px;letter-spacing:.16em;text-transform:uppercase}
+.leg .line{position:relative;display:flex;align-items:center;gap:7px;padding:7px 0 7px 18px;font-size:12px;font-weight:600;color:var(--muted)}
+.leg .line::before{content:"";position:absolute;left:6px;top:3px;bottom:3px;border-left:2px dotted #9CC3BE}
+.leg svg{width:15px;height:15px;flex:none}
 
-/* arrivals (shared) */
-.mini{margin-top:10px;border-top:1px solid var(--dune2);padding-top:6px}
+/* arrivals */
 .grp{padding:14px 16px 6px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gulf-deep);display:flex;align-items:center;gap:10px}
 .grp::after{content:"";flex:1;height:1px;background:var(--dune2)}
 .grp.wait{color:var(--faint)}
 .grp.out{color:var(--sunset)}
-.mini .grp{padding-left:0;padding-right:0}
 .row{display:grid;grid-template-columns:86px 36px minmax(0,1fr) auto;gap:2px 10px;align-items:center;padding:12px 16px;border-top:1px solid var(--dune2)}
-.mini .row{padding-left:0;padding-right:0}
 .av{position:relative;width:36px;height:36px;border-radius:50%;overflow:hidden;border:2px solid #fff;box-shadow:0 0 0 1.5px var(--gulf);background:var(--gulf-soft);color:var(--gulf-deep);font-family:var(--mono);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
 .av.wait{box-shadow:0 0 0 1.5px var(--faint)}
 .av.out{box-shadow:0 0 0 1.5px var(--sunset)}
@@ -132,15 +150,13 @@ section{margin-top:36px;scroll-margin-top:calc(56px + env(safe-area-inset-top))}
 .row .sub{color:var(--muted);font-size:12.5px;margin-top:2px;line-height:1.35}
 .row .sub a{color:var(--muted);text-decoration:underline;text-decoration-color:var(--dune)}
 .st{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;padding:4px 7px;border-radius:4px;border:1px solid transparent;white-space:nowrap}
-.st.locked{background:var(--gulf);color:#fff;font-weight:700}
+.st.locked{background:var(--gulf-deep);color:#fff;font-weight:700}
 .st.wait{color:var(--sun);border-color:#EBCF8F;background:var(--sun-soft)}
-.st.out{color:var(--sunset);border-color:#F3BFA4;background:var(--sunset-soft)}
+.st.out{color:var(--sunset);border-color:#F5B6C4;background:var(--sunset-soft)}
 .empty-row{padding:14px 16px;color:var(--faint);font-size:13px}
-.mini .empty-row{padding-left:0}
 
 /* timeline */
 .tl{padding:14px 16px 10px;border-top:1px solid var(--dune2)}
-.mini .tl{padding-left:0;padding-right:0;border-top:0}
 .tl:first-child{border-top:0}
 .tl-head{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gulf-deep);margin-bottom:10px}
 .tl-head.out{color:var(--sunset)}
@@ -154,8 +170,6 @@ section{margin-top:36px;scroll-margin-top:calc(56px + env(safe-area-inset-top))}
 .tl-chip.out{border-color:var(--sunset)}
 .tl-dot{position:absolute;bottom:24px;width:9px;height:9px;border-radius:50%;background:var(--gulf);border:2px solid #fff;transform:translateX(-50%);box-shadow:0 0 0 1px var(--gulf)}
 .tl-dot.out{background:var(--sunset);box-shadow:0 0 0 1px var(--sunset)}
-
-/* spots */
 
 /* rooms */
 .rooms{display:grid;gap:14px}
@@ -213,7 +227,7 @@ section{margin-top:36px;scroll-margin-top:calc(56px + env(safe-area-inset-top))}
     <p class="sub"><b>Naples, FL</b> · Thursday 3/4 – Sunday 3/7, 2027 · The Vineyards</p>
     <div class="meta"><span class="chip" id="route">→ FL</span></div>
   </div>
-  <svg class="wave" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0,22 C240,44 480,0 720,22 C960,44 1200,0 1440,22 L1440,40 L0,40 Z" fill="#FAF5EC"/></svg>
+  <svg class="wave" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0,22 C240,44 480,0 720,22 C960,44 1200,0 1440,22 L1440,40 L0,40 Z" fill="#E7F5F1"/></svg>
 </header>
 
 <nav class="nav" aria-label="Sections"><div class="wrap"><ul>
@@ -273,7 +287,7 @@ section{margin-top:36px;scroll-margin-top:calc(56px + env(safe-area-inset-top))}
   <p class="inst-warn" id="inappnote" hidden>Open this in Safari first. In-app browsers can't add it.</p>
 </section>
 
-<footer class="foot">Wardogg's Bachelorpalooza · Naples, FL · 3/4–3/7/2027 · Updated 11/11/26</footer>
+<footer class="foot">Wardogg's Bachelorpalooza · Naples, FL · 3/4–3/7/2027 · Updated 11/11/26 · Photos: Unsplash</footer>
 </div>
 </div>
 
@@ -291,6 +305,7 @@ const el=(t,c,txt)=>{const e=document.createElement(t);if(c)e.className=c;if(txt
 const pad=n=>String(n).padStart(2,'0');
 const DOW=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 const DOWL=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const PHOTO_DIR='';   // photos sit next to index.html, named first_last.jpg, e.g. warren_lightfoot.jpg
 const slug=n=>(n||'').toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'');
@@ -310,72 +325,79 @@ const PEOPLE=[
   {name:'Dan Yeh',home:'WI',phone:'601.566.4063'}
 ];
 
+// plan items: an event {t start, e end, k kind, i icon, w what, wh where, pl places, nt note, ph photo} or a leg {leg, min, leave}
 const DAYS=[
-  {id:'thu',date:'2027-03-04',title:'Arrival day',lines:[
-    'Afternoon | Crew rolls in |',
-    '8:30 PM | Grill out at the house |'
+  {id:'thu',date:'2027-03-04',title:'Arrival day',items:[
+    {t:'Afternoon',k:'fly',w:'Crew rolls in',wh:'Fly into RSW',ph:'1556793095-97e571ae68a8'},
+    {t:'8:30 PM',k:'meal',w:'Grill out',wh:'At the house',ph:'1741994246814-9caec2a78e07'}
   ]},
-  {id:'fri',date:'2027-03-05',title:'Golf day',lines:[
-    'Morning | Pool at the house |',
-    '11:15 AM | Leave the house for the club |',
-    '~ 5 min drive from House to Vineyards Country Club',
-    '11:30 AM–12:30 PM | Lunch at the club · Vineyards |',
-    '1:00 PM–5:30 PM | Golf · 18 holes at Vineyards | Three foursomes, tee times about 10 min apart. Booked through the club.',
-    '~ 5 min drive from Vineyards Country Club to House',
-    '5:45 PM–6:45 PM | Pool + downtime |',
-    '6:45 PM | Leave the house for dinner |',
-    '~ 30 min drive from House to Tommy Bahama, Old Naples',
-    '7:15 PM–8:45 PM | Dinner · Tommy Bahama |',
-    '~ 25 min drive from Tommy Bahama to Seed to Table',
-    '9:15 PM–10:15 PM | Seed to Table · upstairs bar |',
-    '~ 15 min drive from Seed to Table to House',
-    '10:30 PM | Back at the house | Hot tub and cigars.'
+  {id:'fri',date:'2027-03-05',title:'Golf day',items:[
+    {t:'Morning',k:'home',w:'Pool',wh:'At the house',ph:'1612896018599-3ba9e85cb147'},
+    {leg:'car',min:5,leave:'11:15 AM'},
+    {t:'11:30 AM',e:'12:30 PM',k:'meal',w:'Lunch at the club',pl:['vy'],ph:'1603722346374-d5e3c673ad3f'},
+    {t:'1:00 PM',e:'5:30 PM',k:'act',i:'golf',w:'Golf · 18 holes',pl:['vy'],nt:'Three foursomes, tee times about 10 min apart.',ph:'1595386977440-33715d9adf39'},
+    {leg:'car',min:5},
+    {t:'5:45 PM',e:'6:45 PM',k:'down',i:'home',w:'Pool + downtime'},
+    {leg:'car',min:30,leave:'6:45 PM'},
+    {t:'7:15 PM',e:'8:45 PM',k:'meal',w:'Dinner',pl:['tb'],ph:'1781961323179-8fa4fc7f204e'},
+    {leg:'car',min:25},
+    {t:'9:15 PM',e:'10:15 PM',k:'drinks',w:'Upstairs bar',pl:['s2t'],ph:'1674654659450-728117e26859'},
+    {leg:'car',min:15},
+    {t:'10:30 PM',k:'home',w:'Hot tub + cigars',wh:'Back at the house'}
   ]},
-  {id:'sat',date:'2027-03-06',title:'Boat day',lines:[
-    'Morning | Load up | Towels, sunscreen, cooler, fishing gear.',
-    '8:30 AM | Leave the house for the marina | Naples Bay Resort or On The Pontoon Boat, to be confirmed with Charles. Both are on Naples Bay.',
-    '~ 30 min drive from House to the marina',
-    '9:00 AM | Check in at the marina | Full-day pontoon rental. Out by 9:30 AM, due back by 4:30 PM.',
-    '9:30 AM | Boat out | Naples Bay to Gordon Pass, then south along Keewaydin Island toward Marco. Fish or cruise on the way down.',
-    '~ 60 min by boat from Naples Bay to Snook Inn, Marco Island',
-    '12:00 PM–1:30 PM | Lunch · Snook Inn | Boat-up dock on the Marco River.',
-    '~ 15 min by boat from Snook Inn to Keewaydin Island south tip',
-    '1:45 PM–3:15 PM | Keewaydin Island | Anchor off the south sandbar.',
-    '~ 45 min by boat from Keewaydin Island to Naples Bay',
-    '4:00 PM | Boat back at the marina | Due back by 4:30 PM.',
-    '~ 30 min drive from the marina to House',
-    '4:45 PM–5:45 PM | Pool + downtime |',
-    '6:00 PM | Leave the house for dinner |',
-    '~ 20 min drive from House to The Turtle Club, Vanderbilt Beach',
-    '6:20 PM | Drinks on the sand · The Turtle Club | Sunset is about 6:30 PM.',
-    '6:45 PM–8:30 PM | Dinner · The Turtle Club | On the beach at Vanderbilt. Reservation for 11. Kitchen closes at 9 PM.',
-    '~ 5 min drive from The Turtle Club to Mercato',
-    '9:00 PM | Blue Martini + Mercato | Blue Martini is open until 2 AM. The rest of Mercato is within walking distance.',
-    '~ 15 min drive from Mercato to House'
+  {id:'sat',date:'2027-03-06',title:'Boat day',items:[
+    {t:'Morning',k:'home',w:'Load up',nt:'Towels, sunscreen, cooler, fishing gear.'},
+    {leg:'car',min:30,leave:'8:30 AM'},
+    {t:'9:00 AM',k:'act',i:'boat',w:'Check in at the marina',pl:['nbr','otp'],nt:'Full-day pontoon. Which marina is to be confirmed with Charles.',ph:'1740486027073-1dac5a179945'},
+    {t:'9:30 AM',k:'act',i:'boat',w:'Boat out',wh:'Naples Bay to Gordon Pass, then south toward Marco',nt:'Fish or cruise on the way down.',ph:'1763076039095-f20cdc911502'},
+    {leg:'boat',min:60},
+    {t:'12:00 PM',e:'1:30 PM',k:'meal',w:'Lunch',pl:['snook'],nt:'Boat-up dock on the Marco River.',ph:'1763380631462-12a2f528ff25'},
+    {leg:'boat',min:15},
+    {t:'1:45 PM',e:'3:15 PM',k:'act',i:'isle',w:'Sandbar',pl:['kw'],nt:'Anchor off the south tip.',ph:'1664690362858-c56070dc6e2f'},
+    {leg:'boat',min:45},
+    {t:'4:00 PM',k:'act',i:'boat',w:'Boat back at the marina',nt:'Due back by 4:30 PM.'},
+    {leg:'car',min:30},
+    {t:'4:45 PM',e:'5:45 PM',k:'down',i:'home',w:'Pool + downtime'},
+    {leg:'car',min:20,leave:'6:00 PM'},
+    {t:'6:20 PM',e:'8:30 PM',k:'meal',w:'Sunset drinks + dinner',pl:['turtle'],nt:'Drinks on the sand for sunset, about 6:30 PM. Dinner at 6:45.',ph:'1790704982457-d9c45f5c83c7'},
+    {leg:'car',min:5},
+    {t:'9:00 PM',k:'drinks',w:'Night out',pl:['bm','merc'],nt:'Blue Martini is open until 2 AM.',ph:'1643040828329-466bb2e3d4b4'},
+    {leg:'car',min:15,to:'home'}
   ]},
-  {id:'sun',date:'2027-03-07',title:'Spa + departures',lines:[
-    'Morning | Easy morning | Pool at the house.',
-    '9:45 AM | Leave the house for the club |',
-    '~ 5 min drive from House to Vineyards Country Club',
-    '10:00 AM–11:00 AM | Spa · Vineyards Wellness Center | Hot tub, steam room, showers, and pool. Bring swim trunks.',
-    '11:00 AM–12:30 PM | Piano brunch buffet · Vineyards main dining room | Walk over from the spa.',
-    '~ 5 min drive from Vineyards Country Club to House',
-    'Afternoon | Airport runs | Latest you can leave the house is 57 min before your flight: 27 min drive to RSW, then boarding 30 min before departure. No cushion for bags or security. Heading-out times are listed under Arrivals.'
+  {id:'sun',date:'2027-03-07',title:'Spa + departures',items:[
+    {t:'Morning',k:'home',w:'Easy morning',wh:'Pool at the house'},
+    {leg:'car',min:5,leave:'9:45 AM'},
+    {t:'10:00 AM',e:'11:00 AM',k:'act',i:'spa',w:'Spa',pl:[['vy','Vineyards Wellness Center']],nt:'Hot tub, steam room, showers, pool. Bring swim trunks.',ph:'1662150535993-2a8397f99603'},
+    {t:'11:00 AM',e:'12:30 PM',k:'meal',w:'Piano brunch buffet',pl:[['vy','Vineyards main dining room']],nt:'Walk over from the spa.',ph:'1504754524776-8f4f37790ca0'},
+    {leg:'car',min:5},
+    {t:'Afternoon',k:'fly',w:'Airport runs',nt:'Latest to leave is 57 min before your flight, with no cushion for bags or security. Your time is under Arrivals.',ph:'1748457305891-4400c7b5a42b'}
   ]}
 ];
 
-const PLACES=[   // keys match a plan block's title; label shows only when a block has more than one place
-  {n:'Vineyards Country Club',a:'400 Vineyards Blvd, Naples, FL 34119',keys:['Vineyards','at the club']},
-  {n:'Tommy Bahama Restaurant & Bar',a:'1220 3rd St S, Naples, FL 34102',keys:['Tommy Bahama']},
-  {n:'Seed to Table',a:'4835 Immokalee Rd, Naples, FL 34110',keys:['Seed to Table']},
-  {n:'Naples Bay Resort Boat Rentals',label:'Naples Bay Resort',a:'1500 5th Ave S, Naples, FL 34102',keys:['at the marina']},
-  {n:'Naples Boat Rentals by On The Pontoon Boat',label:'On The Pontoon Boat',a:'3200 Bayshore Dr, Naples, FL 34112',keys:['at the marina']},
-  {n:'Snook Inn',a:'1215 Bald Eagle Dr, Marco Island, FL 34145',keys:['Snook Inn']},
-  {n:'Keewaydin Island, FL',keys:['Keewaydin']},
-  {n:'The Turtle Club',a:'9225 Gulf Shore Dr, Naples, FL 34108',keys:['Turtle Club']},
-  {n:'Blue Martini',a:'9114 Strada Pl #12105, Naples, FL 34108',keys:['Blue Martini']},
-  {n:'Mercato',a:'9110 Strada Pl, Naples, FL 34108',keys:['Mercato']}
-];
+const PLACES={   // Apple Maps pins; s is the short label
+  vy:{n:'Vineyards Country Club',a:'400 Vineyards Blvd, Naples, FL 34119'},
+  tb:{n:'Tommy Bahama Restaurant & Bar',s:'Tommy Bahama',a:'1220 3rd St S, Naples, FL 34102'},
+  s2t:{n:'Seed to Table',a:'4835 Immokalee Rd, Naples, FL 34110'},
+  nbr:{n:'Naples Bay Resort Boat Rentals',s:'Naples Bay Resort',a:'1500 5th Ave S, Naples, FL 34102'},
+  otp:{n:'Naples Boat Rentals by On The Pontoon Boat',s:'On The Pontoon Boat',a:'3200 Bayshore Dr, Naples, FL 34112'},
+  snook:{n:'Snook Inn',a:'1215 Bald Eagle Dr, Marco Island, FL 34145'},
+  kw:{n:'Keewaydin Island, FL',s:'Keewaydin Island'},
+  turtle:{n:'The Turtle Club',a:'9225 Gulf Shore Dr, Naples, FL 34108'},
+  bm:{n:'Blue Martini',a:'9114 Strada Pl #12105, Naples, FL 34108'},
+  merc:{n:'Mercato',a:'9110 Strada Pl, Naples, FL 34108'}
+};
+const PH=id=>'https://images.unsplash.com/photo-'+id+'?w=900&h=420&fit=crop&q=70&auto=format';
+const IC={   // 16px glyphs, drawn in the tile's kind color
+  fly:'<path transform="translate(8 8) rotate(45) scale(.64) translate(-12 -12)" d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>',
+  home:'<path d="M8 2.2 14 7.4v6.4H9.9V10H6.1v3.8H2V7.4z"/>',
+  meal:'<path d="M4.2 1.8v4.6c0 .9.6 1.6 1.4 1.8v6h1.6v-6c.8-.2 1.4-.9 1.4-1.8V1.8H7.4v3.8h-.6V1.8H5.6v3.8H5V1.8zM11.6 1.8c-1.3.5-2 2-2 3.8v3.2h1.4v5.4h1.6V1.8z"/>',
+  drinks:'<path d="M2.4 2.4h11.2L8.8 8v4.4h2.4v1.4H4.8v-1.4h2.4V8z"/>',
+  golf:'<path d="M6.2 1.6v10.2h1.4V7.2l5-2.8z"/><ellipse cx="7.6" cy="13" rx="4.6" ry="1.4"/>',
+  boat:'<path d="M1.8 9.6h12.4l-1.9 4H3.7z"/><path d="M5.2 8.6V5.4h3.6l2.2 3.2z"/><path d="M7.4 4.6V2h1.2v2.6z"/>',
+  spa:'<path d="M8 1.8c1.8 2.3 3.2 4.3 3.2 6.2a3.2 3.2 0 0 1-6.4 0c0-1.9 1.4-3.9 3.2-6.2z"/><path d="M2 12.6h12v1.6H2z"/>',
+  isle:'<circle cx="8" cy="5.2" r="2.6"/><path d="M1.6 10.4h12.8V12H1.6zM3.6 13h8.8v1.4H3.6z"/>',
+  car:'<path d="M2.5 9.2 3.8 5.7A1.6 1.6 0 0 1 5.3 4.6h5.4a1.6 1.6 0 0 1 1.5 1.1l1.3 3.5v3.1h-1.7v-1.1H4.2v1.1H2.5z"/><circle cx="5" cy="9.4" r="1" fill="#fff"/><circle cx="11" cy="9.4" r="1" fill="#fff"/>'
+};
 
 const REVEAL_ONLY_CONFIRMED=true;   // names show only once the person has a confirmed flight
 const ROOMS=[
@@ -387,7 +409,7 @@ const ROOMS=[
 
 /* ---------- hero scene (flat, Nagai-style) ---------- */
 function palm(x,y,h,dir,sc){
-  const tx=x+dir*h*0.22, ty=y-h, ink='#0F3A52';
+  const tx=x+dir*h*0.22, ty=y-h, ink='#12333F';
   let o='<path d="M'+(x-10*sc)+','+y+' Q'+(x+dir*h*0.02)+','+(y-h*0.55)+' '+(tx-4*sc)+','+ty+' L'+(tx+4*sc)+','+ty+' Q'+(x+dir*h*0.14)+','+(y-h*0.55)+' '+(x+10*sc)+','+y+' Z" fill="'+ink+'"/>';
   [-160,-128,-96,-64,-32,-4,190].forEach(a=>{
     const r=a*Math.PI/180, len=h*0.46*sc, droop=Math.abs(Math.cos(r))*len*0.4;
@@ -401,18 +423,18 @@ function palm(x,y,h,dir,sc){
 function cloud(x,y,sc){
   const parts=[[0,0,34],[30,-16,46],[70,-6,40],[100,8,28],[-28,10,26]];
   const body=parts.map(p=>'<circle cx="'+(x+p[0]*sc)+'" cy="'+(y+p[1]*sc)+'" r="'+(p[2]*sc)+'"/>').join('')+'<rect x="'+(x-54*sc)+'" y="'+y+'" width="'+(182*sc)+'" height="'+(26*sc)+'" rx="'+(13*sc)+'"/>';
-  return '<g fill="#BFE2F6" transform="translate(0,'+(9*sc)+')">'+body+'</g><g fill="#FFFFFF">'+body+'</g>';
+  return '<g fill="#E8658A" opacity=".55" transform="translate(0,'+(9*sc)+')">'+body+'</g><g fill="#FFD9D2">'+body+'</g>';
 }
 function buildScene(){
   let o='<svg class="scene" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMax slice" aria-hidden="true">';
-  o+='<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#143C8C"/><stop offset=".5" stop-color="#2A86D2"/><stop offset="1" stop-color="#A3E0F5"/></linearGradient></defs>';
+  o+='<defs><linearGradient id="sky" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="378"><stop offset="0" stop-color="#4E1A63"/><stop offset=".45" stop-color="#B32463"/><stop offset=".75" stop-color="#F0525A"/><stop offset=".93" stop-color="#FF9D4D"/><stop offset="1" stop-color="#FFD27F"/></linearGradient></defs>';
   o+='<rect width="1200" height="520" fill="url(#sky)"/>';
   o+=cloud(1060,104,.8)+cloud(70,340,.55)+cloud(690,344,.42);
-  o+='<circle cx="790" cy="378" r="76" fill="#FFB070"/><circle cx="790" cy="378" r="62" fill="#FFC58C"/>';
-  o+='<rect y="378" width="1200" height="142" fill="#1FB3D4"/><rect y="378" width="1200" height="10" fill="#A8EEF5"/>';
-  o+='<rect y="414" width="1200" height="4" fill="#8AE4EF" opacity=".85"/><rect y="446" width="1200" height="4" fill="#8AE4EF" opacity=".6"/>';
-  o+='<g fill="#FFD9B4"><rect x="752" y="396" width="76" height="5"/><rect x="762" y="410" width="56" height="5"/><rect x="772" y="424" width="36" height="5"/></g>';
-  o+='<path d="M0,474 C220,458 520,502 820,484 C1000,474 1100,488 1200,480 L1200,520 L0,520 Z" fill="#F7E6C6"/>';
+  o+='<circle cx="790" cy="378" r="76" fill="#FFE39A"/><circle cx="790" cy="378" r="62" fill="#FFF6D6"/>';
+  o+='<rect y="378" width="1200" height="142" fill="#10A8A5"/><rect y="378" width="1200" height="10" fill="#8FEDE0"/>';
+  o+='<rect y="414" width="1200" height="4" fill="#6FE0D4" opacity=".85"/><rect y="446" width="1200" height="4" fill="#6FE0D4" opacity=".6"/>';
+  o+='<g fill="#FFE9B0"><rect x="752" y="396" width="76" height="5"/><rect x="762" y="410" width="56" height="5"/><rect x="772" y="424" width="36" height="5"/></g>';
+  o+='<path d="M0,474 C220,458 520,502 820,484 C1000,474 1100,488 1200,480 L1200,520 L0,520 Z" fill="#FFEFD2"/>';
   o+=palm(932,505,322,-1,1)+palm(994,508,232,-1,.8);
   return o+'</svg>';
 }
@@ -433,18 +455,7 @@ function hourLabel(h){ h=((h%24)+24)%24; const ap=h>=12?'p':'a'; let x=h%12; if(
 function shortName(n){ return (n||'').trim().split(/\s+/)[0]; }
 function telHref(ph){ return 'tel:'+String(ph).replace(/[^\d+]/g,''); }
 function amap(pl){ return 'https://maps.apple.com/?'+(pl.a?'address='+encodeURIComponent(pl.a)+'&':'')+'q='+encodeURIComponent(pl.n); }
-function placesFor(title){ const t=(title||'').toLowerCase(); return /^leave the house/.test(t)?[]:PLACES.filter(pl=>pl.keys.some(k=>t.includes(k.toLowerCase()))); }
 
-function parseLine(l){
-  l=(l||'').trim();
-  if(/^~/.test(l)) return {kind:'travel',text:l.replace(/^~\s*/,'')};
-  const parts=l.split('|').map(x=>x.trim());
-  if(parts.length===1) return {kind:'block',time:'',end:'',title:parts[0],note:''};
-  let time=parts[0], end='';
-  const m=time.split(/\s*[\u2013\u2014-]\s*/);
-  if(m.length>1&&/\d/.test(m[1])){ time=m[0]; end=m[1]; }
-  return {kind:'block',time,end,title:parts[1]||'',note:parts.slice(2).join(' | ')};
-}
 const isClock=x=>/^\d{1,2}(:\d{2})?\s*(am|pm)$/i.test((x||'').trim());
 
 /* ---------- arrivals model ---------- */
@@ -534,40 +545,47 @@ function renderRoute(){
   const set=new Set(); PEOPLE.forEach(p=>{ if(p.home) set.add(p.home.toUpperCase()); });
   $('#route').textContent=Array.from(set).sort().join(' · ')+'  →  FL';
 }
-function renderBlocks(host,lines){
-  const list=el('div','blocks');
-  lines.forEach(raw=>{
-    const it=parseLine(raw);
-    if(it.kind==='travel'){ const r=el('div','trv'); r.appendChild(el('div')); r.appendChild(el('div','tx',it.text)); list.appendChild(r); return; }
-    const r=el('div','blk'+(/^leave the house/i.test(it.title)?' leave':'')); const tm=el('div','tm');
-    if(isClock(it.time)){ tm.textContent=it.time.replace(/\s+/g,' ').toUpperCase(); if(it.end) tm.appendChild(el('small',null,'to '+it.end.toUpperCase())); }
-    else { tm.classList.add('lbl'); tm.textContent=it.time; }
-    const body=el('div'); const tt=el('div','tt',it.title); if(/\bTBD\b/i.test(it.title)) tt.classList.add('tbd'); body.appendChild(tt);
-    const pls=placesFor(it.title);
-    if(pls.length){ const mp=el('div','maps'); pls.forEach(pl=>{ const l=el('a','lnk',(pls.length>1?(pl.label||pl.n):'Apple Maps')+' ↗'); l.href=amap(pl); l.target='_blank'; l.rel='noopener'; l.setAttribute('aria-label',pl.n+' in Apple Maps'); mp.appendChild(l); }); body.appendChild(mp); }
-    if(it.note) body.appendChild(el('div','nt',it.note));
-    r.append(tm,body); list.appendChild(r);
-  });
-  host.appendChild(list);
+function evEl(it){
+  const r=el('div','ev'), t=el('div','t'+(isClock(it.t)?'':' lbl'));
+  t.appendChild(el('b',null,it.t)); if(it.e) t.appendChild(el('span',null,it.e));
+  const b=el('div','b k-'+it.k);
+  b.innerHTML='<svg class="ic" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">'+IC[it.i||it.k]+'</svg>';
+  const tx=el('div','tx'); tx.appendChild(el('div','w',it.w));
+  if(it.wh||it.pl){
+    const wh=el('div','wh',it.wh||'');
+    (it.pl||[]).forEach((p,n)=>{
+      const pl=PLACES[Array.isArray(p)?p[0]:p];
+      if(n||it.wh) wh.appendChild(document.createTextNode(' · '));
+      const a=el('a',null,(Array.isArray(p)?p[1]:(pl.s||pl.n))+' ↗'); a.href=amap(pl); a.target='_blank'; a.rel='noopener'; a.setAttribute('aria-label',pl.n+' in Apple Maps'); wh.appendChild(a);
+    });
+    tx.appendChild(wh);
+  }
+  if(it.nt) tx.appendChild(el('div','nt',it.nt));
+  b.appendChild(tx);
+  if(it.ph){
+    const pc=el('div','pic'), im=el('img'); im.alt=''; im.loading='lazy'; im.decoding='async';
+    im.onerror=()=>{ pc.remove(); b.classList.remove('has-ph'); };
+    im.src=PH(it.ph); pc.appendChild(im); b.appendChild(pc); b.classList.add('has-ph');
+  }
+  r.append(t,b); return r;
+}
+function legEl(it){
+  const r=el('div','leg'), lv=el('div','lv'), ln=el('div','line');
+  if(it.leave){ lv.appendChild(el('i',null,'Leave')); lv.appendChild(document.createTextNode(it.leave)); }
+  ln.innerHTML='<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">'+IC[it.leg]+'</svg>';
+  ln.appendChild(document.createTextNode(it.min+' min '+(it.leg==='boat'?'by boat':'drive')+(it.to?' '+it.to:'')));
+  r.append(lv,ln); return r;
 }
 function renderDays(){
   const host=$('#days'); host.innerHTML='';
-  const A=splitArrivals();
   DAYS.forEach(d=>{
-    const card=el('div','panel day '+d.id);
-    const dt=keyDate(d.date);
-    const h=el('div','day-h');
-    const dn=el('div','day-d',DOWL[dt.getDay()]); dn.appendChild(el('span',null,md(dt)));
-    h.append(dn,el('div','day-t',d.title)); card.appendChild(h);
-    renderBlocks(card,d.lines);
-    host.appendChild(card);
-    if(d.id==='thu'){
-      const mini=el('div','mini'); card.appendChild(mini);
-      const keys=['2027-03-03','2027-03-04','2027-03-05'];
-      let any=false;
-      keys.forEach(k=>{ const items=(A.groups.get(k)||[]).map(x=>({p:x.p,t:x.eta})); if(!items.length) return; any=true; renderStrip(mini,k,items,{label:dayLong(k)+' · at the house'}); });
-      if(!any) mini.appendChild(el('div','empty-row','Arrival times will appear here as flights are confirmed.'));
-    }
+    const sec=el('div','day '+d.id), dt=keyDate(d.date);
+    const h=el('div','dh'), cal=el('div','cal'), hd=el('div');
+    cal.append(el('b',null,MON[dt.getMonth()]),el('span',null,dt.getDate()));
+    hd.append(el('div','dn',DOWL[dt.getDay()]),el('div','dsub',d.title));
+    h.append(cal,hd); sec.appendChild(h);
+    d.items.forEach(it=>sec.appendChild(it.leg?legEl(it):evEl(it)));
+    host.appendChild(sec);
   });
 }
 function renderArrivals(){
@@ -587,26 +605,26 @@ function bedSvg(bed){
   let s='<svg class="bed" viewBox="0 0 '+w+' '+h+'" aria-hidden="true">';
   const pillow=(x,y,pw,filled)=>'<rect x="'+x+'" y="'+y+'" width="'+pw+'" height="14" rx="6" fill="'+(filled?'var(--gulf)':'none')+'" stroke="'+(filled?'var(--gulf)':'var(--faint)')+'" stroke-width="2"'+(filled?'':' stroke-dasharray="4 3"')+'/>';
   if(bed.type==='Sectional'){
-    s+='<rect x="10" y="28" width="'+(w-20)+'" height="20" rx="7" fill="#F1EADB" stroke="var(--dune)" stroke-width="2"/>';
-    s+='<rect x="10" y="46" width="'+(w-20)+'" height="24" rx="8" fill="#FBF7EE" stroke="var(--dune)" stroke-width="2"/>';
-    s+='<rect x="'+(w-56)+'" y="46" width="46" height="44" rx="8" fill="#FBF7EE" stroke="var(--dune)" stroke-width="2"/>';
-    s+='<rect x="4" y="40" width="12" height="32" rx="5" fill="#F1EADB" stroke="var(--dune)" stroke-width="2"/>';
+    s+='<rect x="10" y="28" width="'+(w-20)+'" height="20" rx="7" fill="#E1F0EC" stroke="var(--dune)" stroke-width="2"/>';
+    s+='<rect x="10" y="46" width="'+(w-20)+'" height="24" rx="8" fill="#F5FBF9" stroke="var(--dune)" stroke-width="2"/>';
+    s+='<rect x="'+(w-56)+'" y="46" width="46" height="44" rx="8" fill="#F5FBF9" stroke="var(--dune)" stroke-width="2"/>';
+    s+='<rect x="4" y="40" width="12" height="32" rx="5" fill="#E1F0EC" stroke="var(--dune)" stroke-width="2"/>';
     s+=pillow(30,32,44,!!bed.slots[0]);
   } else if(bed.type==='Air mattress'){
-    s+='<rect x="18" y="24" width="'+(w-36)+'" height="'+(h-36)+'" rx="14" fill="#FBF7EE" stroke="var(--dune)" stroke-width="2"/>';
+    s+='<rect x="18" y="24" width="'+(w-36)+'" height="'+(h-36)+'" rx="14" fill="#F5FBF9" stroke="var(--dune)" stroke-width="2"/>';
     for(let y=48;y<h-20;y+=10) s+='<line x1="24" y1="'+y+'" x2="'+(w-24)+'" y2="'+y+'" stroke="var(--dune2)" stroke-width="2"/>';
     s+='<circle cx="'+(w-30)+'" cy="'+(h-24)+'" r="3" fill="var(--dune)"/>';
     s+=pillow(w/2-24,31,48,!!bed.slots[0]);
   } else if(bed.type==='Couch'){
-    s+='<rect x="14" y="30" width="'+(w-28)+'" height="22" rx="8" fill="#F1EADB" stroke="var(--dune)" stroke-width="2"/>';
-    s+='<rect x="10" y="50" width="'+(w-20)+'" height="26" rx="9" fill="#FBF7EE" stroke="var(--dune)" stroke-width="2"/>';
-    s+='<rect x="4" y="44" width="14" height="34" rx="6" fill="#F1EADB" stroke="var(--dune)" stroke-width="2"/>';
-    s+='<rect x="'+(w-18)+'" y="44" width="14" height="34" rx="6" fill="#F1EADB" stroke="var(--dune)" stroke-width="2"/>';
+    s+='<rect x="14" y="30" width="'+(w-28)+'" height="22" rx="8" fill="#E1F0EC" stroke="var(--dune)" stroke-width="2"/>';
+    s+='<rect x="10" y="50" width="'+(w-20)+'" height="26" rx="9" fill="#F5FBF9" stroke="var(--dune)" stroke-width="2"/>';
+    s+='<rect x="4" y="44" width="14" height="34" rx="6" fill="#E1F0EC" stroke="var(--dune)" stroke-width="2"/>';
+    s+='<rect x="'+(w-18)+'" y="44" width="14" height="34" rx="6" fill="#E1F0EC" stroke="var(--dune)" stroke-width="2"/>';
     const filled=!!bed.slots[0];
     s+='<rect x="'+(w/2-22)+'" y="34" width="44" height="14" rx="6" fill="'+(filled?'var(--gulf)':'none')+'" stroke="'+(filled?'var(--gulf)':'var(--faint)')+'" stroke-width="2"'+(filled?'':' stroke-dasharray="4 3"')+'/>';
   } else {
-    s+='<rect x="14" y="6" width="'+(w-28)+'" height="12" rx="4" fill="#E6DCCB"/>';
-    s+='<rect x="18" y="18" width="'+(w-36)+'" height="'+(h-26)+'" rx="10" fill="#FBF7EE" stroke="var(--dune)" stroke-width="2"/>';
+    s+='<rect x="14" y="6" width="'+(w-28)+'" height="12" rx="4" fill="#C4E1DC"/>';
+    s+='<rect x="18" y="18" width="'+(w-36)+'" height="'+(h-26)+'" rx="10" fill="#F5FBF9" stroke="var(--dune)" stroke-width="2"/>';
     s+='<rect x="22" y="50" width="'+(w-44)+'" height="'+(h-62)+'" rx="8" fill="var(--gulf-soft)"/>';
     const inner=w-36-16, pw=(inner-(n-1)*8)/n;
     bed.slots.forEach((who,i)=>{ const x=18+8+i*(pw+8); const filled=!!who;
@@ -665,10 +683,10 @@ function render(){ renderRoute(); renderDays(); renderArrivals(); renderRooms();
 
 document.querySelectorAll('.nav [data-go]').forEach(b=>b.addEventListener('click',()=>{ const t=document.getElementById(b.getAttribute('data-go')); if(t) t.scrollIntoView({behavior:'smooth',block:'start'}); }));
 let rt, lastW=0;
-function relayout(){ clearTimeout(rt); rt=setTimeout(()=>{ const w=document.documentElement.clientWidth; if(w===lastW) return; lastW=w; fitTitle(); renderDays(); renderArrivals(); },120); }
+function relayout(){ clearTimeout(rt); rt=setTimeout(()=>{ const w=document.documentElement.clientWidth; if(w===lastW) return; lastW=w; fitTitle(); renderArrivals(); },120); }
 window.addEventListener('resize',relayout);
 if(window.ResizeObserver){ new ResizeObserver(relayout).observe(document.documentElement); }
-if(document.fonts&&document.fonts.load){ document.fonts.load('800 40px "Barlow Condensed"').then(fs=>{ if(fs&&fs.length) document.documentElement.classList.add('cond'); fitTitle(); renderDays(); renderArrivals(); }).catch(()=>{}); }
+if(document.fonts&&document.fonts.load){ document.fonts.load('800 40px "Barlow Condensed"').then(fs=>{ if(fs&&fs.length) document.documentElement.classList.add('cond'); fitTitle(); renderArrivals(); }).catch(()=>{}); }
 $('.hero').insertAdjacentHTML('afterbegin',buildScene());
 function initInstall(){
   const sec=$('#install'); if(!sec) return;
