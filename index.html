@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Wardogg Bachelorpalooza</title>
-<meta name="description" content="Wardogg's Bachelorpalooza · Naples, FL · Thursday 3/4 – Sunday 3/7, 2027. The plan, arrivals, spots, and rooms.">
+<meta name="description" content="Wardogg's Bachelorpalooza · Naples, FL · Thursday 3/4 – Sunday 3/7, 2027. The plan, arrivals, and rooms.">
 <meta property="og:title" content="Wardogg's Bachelorpalooza · Naples, FL">
-<meta property="og:description" content="Thursday 3/4 – Sunday 3/7, 2027. The plan, arrivals, spots, and rooms.">
+<meta property="og:description" content="Thursday 3/4 – Sunday 3/7, 2027. The plan, arrivals, and rooms.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="preview.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -98,6 +98,8 @@ section{margin-top:36px;scroll-margin-top:calc(56px + env(safe-area-inset-top))}
 .blk .tt.tbd{color:var(--sun)}
 .blk.leave .tt{color:var(--sunset)}
 .blk .nt{color:var(--muted);font-size:13px;line-height:1.45;margin-top:2px}
+.blk .maps{display:flex;flex-wrap:wrap;gap:2px 14px;margin-top:3px}
+.blk .maps .lnk{margin-left:0}
 .trv{display:grid;grid-template-columns:76px minmax(0,1fr);gap:0 12px;padding:4px 0}
 .trv .tx{font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;color:var(--faint);line-height:1.4}
 .trv .tx::before{content:"↳ "}
@@ -154,12 +156,6 @@ section{margin-top:36px;scroll-margin-top:calc(56px + env(safe-area-inset-top))}
 .tl-dot.out{background:var(--sunset);box-shadow:0 0 0 1px var(--sunset)}
 
 /* spots */
-.spot{display:block;padding:12px 16px;border-top:1px solid var(--dune2)}
-.spot:first-child{border-top:0}
-.spot .n{font-weight:600;font-size:15px}
-.spot .w{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gulf-deep);margin:2px 0 3px;line-height:1.5}
-.spot .a{color:var(--muted);font-size:13px;line-height:1.5}
-.spot .a .dv{color:var(--faint)}
 
 /* rooms */
 .rooms{display:grid;gap:14px}
@@ -200,7 +196,7 @@ section{margin-top:36px;scroll-margin-top:calc(56px + env(safe-area-inset-top))}
 @media print{
   .nav{display:none}
   .hero{padding:26px 0 40px}
-  .panel,.day,.room,.tl,.spot,.row{break-inside:avoid;box-shadow:none}
+  .panel,.day,.room,.tl,.row{break-inside:avoid;box-shadow:none}
   section{margin-top:22px}
   .page{padding-bottom:0}
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
@@ -233,7 +229,7 @@ section{margin-top:36px;scroll-margin-top:calc(56px + env(safe-area-inset-top))}
   <div class="sec-h"><h2>The basics</h2><span class="note">Fly into RSW</span></div>
   <div class="panel kv">
     <div class="k">House</div>
-    <div class="v">5836 Jameson Dr, Naples, FL 34119<a class="lnk" href="https://maps.apple.com/?daddr=5836%20Jameson%20Dr%2C%20Naples%2C%20FL%2034119&dirflg=d" target="_blank" rel="noopener">Apple Maps ↗</a>
+    <div class="v">5836 Jameson Dr, Naples, FL 34119<a class="lnk" href="https://maps.apple.com/?address=5836%20Jameson%20Dr%2C%20Naples%2C%20FL%2034119" target="_blank" rel="noopener">Apple Maps ↗</a>
       <small>The Maxfield family home inside The Vineyards, a gated community in North Naples.</small>
       <span class="gate">At the gate, tell the guard you're visiting Charles Maxfield.</span></div>
     <div class="k">Airport</div>
@@ -250,12 +246,10 @@ section{margin-top:36px;scroll-margin-top:calc(56px + env(safe-area-inset-top))}
 <section id="plan">
   <div class="sec-h"><h2>The plan</h2><span class="note">Times are estimates</span></div>
   <div class="days" id="days"></div>
-  <div class="sub-h">Spots · drive time from the house</div>
-  <div class="panel" id="spots"></div>
 </section>
 
 <section id="arrivals">
-  <div class="sec-h"><h2>Arrivals</h2><span class="note">Landing + 45 min = at the house</span></div>
+  <div class="sec-h"><h2>Arrivals</h2><span class="note">Landing + 61 min = at the house</span></div>
   <div class="panel">
     <div id="timeline"></div>
     <div id="board"></div>
@@ -286,8 +280,12 @@ section{margin-top:36px;scroll-margin-top:calc(56px + env(safe-area-inset-top))}
 <script>
 (function(){
 'use strict';
-const BUFFER_MIN=45;      // landing to house: 15 min to deboard + get a ride, 30 min drive
-const LEAVE_BEFORE=90;    // leave the house this many minutes before a departing flight
+const DEBOARD_MIN=30;     // landing to curb
+const DRIVE_FROM_RSW=31;  // RSW to the house, 26.5 mi via I-75 S
+const BOARD_MIN=30;       // at the gate this long before departure
+const DRIVE_TO_RSW=27;    // the house to RSW, 24.8 mi via I-75 N
+const BUFFER_MIN=DEBOARD_MIN+DRIVE_FROM_RSW;   // landing to at the house
+const LEAVE_BEFORE=BOARD_MIN+DRIVE_TO_RSW;     // latest to leave the house before a departing flight
 const $=(s,r)=>(r||document).querySelector(s);
 const el=(t,c,txt)=>{const e=document.createElement(t);if(c)e.className=c;if(txt!=null)e.textContent=txt;return e;};
 const pad=n=>String(n).padStart(2,'0');
@@ -362,29 +360,28 @@ const DAYS=[
     '10:00 AM–11:00 AM | Spa · Vineyards Wellness Center | Hot tub, steam room, showers, and pool. Bring swim trunks.',
     '11:00 AM–12:30 PM | Piano brunch buffet · Vineyards main dining room | Walk over from the spa.',
     '~ 5 min drive from Vineyards Country Club to House',
-    'Afternoon | Airport runs | Leave the house about 1 hr 30 min before your flight. RSW is 30 min away. Heading-out times are listed under Arrivals.'
+    'Afternoon | Airport runs | Latest you can leave the house is 57 min before your flight: 27 min drive to RSW, then boarding 30 min before departure. No cushion for bags or security. Heading-out times are listed under Arrivals.'
   ]}
 ];
 
-const SPOTS=[
-  {n:'Vineyards Country Club',a:'400 Vineyards Blvd, Naples, FL 34119',drive:'5 min from the house',keys:['Vineyards']},
-  {n:'Tommy Bahama Restaurant & Bar',a:'1220 3rd St S, Naples, FL 34102',drive:'30 min from the house',keys:['Tommy Bahama']},
-  {n:'Seed to Table',a:'4835 Immokalee Rd, Naples, FL 34110',drive:'12 min from the house',keys:['Seed to Table']},
-  {n:'Naples Bay Resort Boat Rentals',a:'1500 5th Ave S, Naples, FL 34102',drive:'30 min from the house',when:'Sat 3/6 · 9:00 AM · option 1'},
-  {n:'Naples Boat Rentals by On The Pontoon Boat',a:'3200 Bayshore Dr, Naples, FL 34112',drive:'30 min from the house',when:'Sat 3/6 · 9:00 AM · option 2'},
-  {n:'Snook Inn',a:'1215 Bald Eagle Dr, Marco Island, FL 34145',drive:'by boat · about 60 min from Naples Bay',keys:['Snook Inn']},
-  {n:'Keewaydin Island',a:'South tip, boat only',drive:'by boat · 15 min from Snook Inn',keys:['Keewaydin'],q:'Keewaydin Island, FL'},
-  {n:'The Turtle Club',a:'9225 Gulf Shore Dr, Naples, FL 34108',drive:'20 min from the house',keys:['Turtle Club']},
-  {n:'Mercato',a:'9110 Strada Pl, Naples, FL 34108',drive:'15 min from the house',keys:['Mercato']},
-  {n:'Blue Martini',a:'9114 Strada Pl #12105, Naples, FL 34108',drive:'15 min from the house',keys:['Blue Martini']}
+const PLACES=[   // keys match a plan block's title; label shows only when a block has more than one place
+  {n:'Vineyards Country Club',a:'400 Vineyards Blvd, Naples, FL 34119',keys:['Vineyards','at the club']},
+  {n:'Tommy Bahama Restaurant & Bar',a:'1220 3rd St S, Naples, FL 34102',keys:['Tommy Bahama']},
+  {n:'Seed to Table',a:'4835 Immokalee Rd, Naples, FL 34110',keys:['Seed to Table']},
+  {n:'Naples Bay Resort Boat Rentals',label:'Naples Bay Resort',a:'1500 5th Ave S, Naples, FL 34102',keys:['at the marina']},
+  {n:'Naples Boat Rentals by On The Pontoon Boat',label:'On The Pontoon Boat',a:'3200 Bayshore Dr, Naples, FL 34112',keys:['at the marina']},
+  {n:'Snook Inn',a:'1215 Bald Eagle Dr, Marco Island, FL 34145',keys:['Snook Inn']},
+  {n:'Keewaydin Island, FL',keys:['Keewaydin']},
+  {n:'The Turtle Club',a:'9225 Gulf Shore Dr, Naples, FL 34108',keys:['Turtle Club']},
+  {n:'Blue Martini',a:'9114 Strada Pl #12105, Naples, FL 34108',keys:['Blue Martini']},
+  {n:'Mercato',a:'9110 Strada Pl, Naples, FL 34108',keys:['Mercato']}
 ];
 
 const REVEAL_ONLY_CONFIRMED=true;   // names show only once the person has a confirmed flight
 const ROOMS=[
   {name:'Master Bedroom',beds:[{type:'King',slots:['Warren Lightfoot','Jackson Lightfoot']}]},
   {name:"Charles' Room",beds:[{type:'King',slots:['Charles Maxfield','Dan Yeh']},{type:'Air mattress',slots:['Wade Schaller']}]},
-  {name:"Charles' Brother's Room",beds:[{type:'Queen',slots:['Mac Harris','Anderson Smith']},{type:'Queen',slots:['Hays Cape',null]}]},
-  {name:'Kitchen Sectional',beds:[{type:'Sectional',slots:['James Crenshaw']}]},
+  {name:"Charles' Brother's Room",beds:[{type:'Queen',slots:['Mac Harris','Anderson Smith']},{type:'Queen',slots:['Hays Cape','James Crenshaw']}]},
   {name:'Living Room Couch',beds:[{type:'Couch',slots:['Mike Sehlinger']}]}
 ];
 
@@ -425,7 +422,7 @@ function toDate(d,t){ if(!d||!t) return null; const x=new Date(d+'T'+t+':00'); r
 function landing(p){ return p.arr?toDate(p.arr[0],p.arr[1]):null; }
 function etaOf(p){ const b=landing(p); return b?new Date(b.getTime()+BUFFER_MIN*60000):null; }
 function depOf(p){ return p.dep?toDate(p.dep[0],p.dep[1]):null; }
-function leaveOf(p){ const d=depOf(p); if(!d) return null; const t=new Date(d.getTime()-LEAVE_BEFORE*60000); t.setMinutes(Math.floor(t.getMinutes()/15)*15,0,0); return t; }
+function leaveOf(p){ const d=depOf(p); if(!d) return null; return new Date(d.getTime()-LEAVE_BEFORE*60000); }
 function fmtTime(d){ let h=d.getHours(); const m=d.getMinutes(); const ap=h>=12?'PM':'AM'; h=h%12||12; return h+':'+pad(m)+' '+ap; }
 function dayKey(d){ return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()); }
 function keyDate(k){ const p=k.split('-').map(Number); return new Date(p[0],p[1]-1,p[2]); }
@@ -435,7 +432,8 @@ function dayShort(k){ const d=keyDate(k); return DOW[d.getDay()]+' '+md(d); }
 function hourLabel(h){ h=((h%24)+24)%24; const ap=h>=12?'p':'a'; let x=h%12; if(x===0) x=12; return x+ap; }
 function shortName(n){ return (n||'').trim().split(/\s+/)[0]; }
 function telHref(ph){ return 'tel:'+String(ph).replace(/[^\d+]/g,''); }
-function amap(sp){ return sp.q?'https://maps.apple.com/?q='+encodeURIComponent(sp.q):'https://maps.apple.com/?daddr='+encodeURIComponent(sp.n+', '+sp.a)+'&dirflg=d'; }
+function amap(pl){ return 'https://maps.apple.com/?'+(pl.a?'address='+encodeURIComponent(pl.a)+'&':'')+'q='+encodeURIComponent(pl.n); }
+function placesFor(title){ const t=(title||'').toLowerCase(); return /^leave the house/.test(t)?[]:PLACES.filter(pl=>pl.keys.some(k=>t.includes(k.toLowerCase()))); }
 
 function parseLine(l){
   l=(l||'').trim();
@@ -464,7 +462,7 @@ function splitArrivals(){
 
 function subHtml(p,mode){
   const parts=[];
-  if(mode==='out'){ parts.push('Leave the house'); if(p.dep&&p.dep[2]) parts.push(esc(p.dep[2])+' departs '+fmtTime(depOf(p))); else parts.push('flight departs '+fmtTime(depOf(p))); }
+  if(mode==='out'){ parts.push('Latest to leave the house'); if(p.dep&&p.dep[2]) parts.push(esc(p.dep[2])+' departs '+fmtTime(depOf(p))); else parts.push('flight departs '+fmtTime(depOf(p))); }
   else{
     const land=landing(p);
     if(!land) parts.push('No flight yet');
@@ -545,6 +543,8 @@ function renderBlocks(host,lines){
     if(isClock(it.time)){ tm.textContent=it.time.replace(/\s+/g,' ').toUpperCase(); if(it.end) tm.appendChild(el('small',null,'to '+it.end.toUpperCase())); }
     else { tm.classList.add('lbl'); tm.textContent=it.time; }
     const body=el('div'); const tt=el('div','tt',it.title); if(/\bTBD\b/i.test(it.title)) tt.classList.add('tbd'); body.appendChild(tt);
+    const pls=placesFor(it.title);
+    if(pls.length){ const mp=el('div','maps'); pls.forEach(pl=>{ const l=el('a','lnk',(pls.length>1?(pl.label||pl.n):'Apple Maps')+' ↗'); l.href=amap(pl); l.target='_blank'; l.rel='noopener'; l.setAttribute('aria-label',pl.n+' in Apple Maps'); mp.appendChild(l); }); body.appendChild(mp); }
     if(it.note) body.appendChild(el('div','nt',it.note));
     r.append(tm,body); list.appendChild(r);
   });
@@ -568,26 +568,6 @@ function renderDays(){
       keys.forEach(k=>{ const items=(A.groups.get(k)||[]).map(x=>({p:x.p,t:x.eta})); if(!items.length) return; any=true; renderStrip(mini,k,items,{label:dayLong(k)+' · at the house'}); });
       if(!any) mini.appendChild(el('div','empty-row','Arrival times will appear here as flights are confirmed.'));
     }
-  });
-}
-function whenFor(sp){
-  if(sp.when) return sp.when;
-  const out=[];
-  DAYS.forEach(d=>{ d.lines.forEach(raw=>{ const it=parseLine(raw); if(it.kind!=='block') return;
-    if((sp.keys||[]).some(k=>it.title.toLowerCase().includes(k.toLowerCase()))){ let w=dayShort(d.date); if(it.time) w+=' · '+(isClock(it.time)?it.time.toUpperCase():it.time); out.push(w); }
-  }); });
-  return out.slice(0,2).join('  ·  ')||'Not scheduled';
-}
-function renderSpots(){
-  const h=$('#spots'); h.innerHTML='';
-  SPOTS.forEach(sp=>{
-    const d=el('div','spot');
-    const a=el('div','a',sp.a+' · ');
-    a.appendChild(el('span','dv',sp.drive));
-    const l=el('a','lnk','Apple Maps ↗'); l.href=amap(sp); l.target='_blank'; l.rel='noopener';
-    a.appendChild(l);
-    d.append(el('div','n',sp.n),el('div','w',whenFor(sp)),a);
-    h.appendChild(d);
   });
 }
 function renderArrivals(){
@@ -681,7 +661,7 @@ function fitTitle(){
   let fs=parseFloat(getComputedStyle(t).fontSize)||40, guard=0;
   while(t.scrollWidth>max&&fs>20&&guard<80){ fs-=1; t.style.fontSize=fs+'px'; guard++; }
 }
-function render(){ renderRoute(); renderDays(); renderSpots(); renderArrivals(); renderRooms(); fitTitle(); }
+function render(){ renderRoute(); renderDays(); renderArrivals(); renderRooms(); fitTitle(); }
 
 document.querySelectorAll('.nav [data-go]').forEach(b=>b.addEventListener('click',()=>{ const t=document.getElementById(b.getAttribute('data-go')); if(t) t.scrollIntoView({behavior:'smooth',block:'start'}); }));
 let rt, lastW=0;
