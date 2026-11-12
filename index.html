@@ -279,7 +279,7 @@ section{margin-top:36px;scroll-margin-top:calc(56px + env(safe-area-inset-top))}
   <p class="inst-warn" id="inappnote" hidden>Open this in Safari first. In-app browsers can't add it.</p>
 </section>
 
-<footer class="foot">Wardogg's Bachelorpalooza · Naples, FL · 3/4–3/7/2027 · Updated 8/21/26</footer>
+<footer class="foot">Wardogg's Bachelorpalooza · Naples, FL · 3/4–3/7/2027 · Updated 11/11/26</footer>
 </div>
 </div>
 
@@ -301,7 +301,7 @@ const initials=n=>(n||'').trim().split(/\s+/).map(w=>w[0]).filter(Boolean).slice
 /* ---------- data ---------- */
 const PEOPLE=[
   {name:'Warren Lightfoot',tag:'Groom',home:'TX',arr:['2027-03-04','19:45','Southwest 2269','DAL'],dep:['2027-03-07','17:40','Southwest 4563']},
-  {name:'Jackson Lightfoot',home:'TX',phone:'205.937.8639'},
+  {name:'Jackson Lightfoot',home:'TX',phone:'205.937.8639',arr:['2027-03-04','22:34','',''],dep:['2027-03-07','11:30','']},
   {name:'Mac Harris',home:'NC',phone:'205.218.9486'},
   {name:'James Crenshaw',home:'AL',phone:'205.790.0849'},
   {name:'Anderson Smith',home:'SC',phone:'205.789.2183'},
@@ -309,7 +309,6 @@ const PEOPLE=[
   {name:'Mike Sehlinger',home:'TX',phone:'502.554.1913'},
   {name:'Wade Schaller',home:'TX',phone:'479.426.7566'},
   {name:'Hays Cape',home:'TN',phone:'731.676.7773'},
-  {name:'Collin Risinger',home:'CT',phone:'860.918.8140'},
   {name:'Dan Yeh',home:'WI',phone:'601.566.4063'}
 ];
 
@@ -384,7 +383,7 @@ const REVEAL_ONLY_CONFIRMED=true;   // names show only once the person has a con
 const ROOMS=[
   {name:'Master Bedroom',beds:[{type:'King',slots:['Warren Lightfoot','Jackson Lightfoot']}]},
   {name:"Charles' Room",beds:[{type:'King',slots:['Charles Maxfield','Dan Yeh']},{type:'Air mattress',slots:['Wade Schaller']}]},
-  {name:"Charles' Brother's Room",beds:[{type:'Queen',slots:['Mac Harris','Anderson Smith']},{type:'Queen',slots:['Hays Cape','Collin Risinger']}]},
+  {name:"Charles' Brother's Room",beds:[{type:'Queen',slots:['Mac Harris','Anderson Smith']},{type:'Queen',slots:['Hays Cape',null]}]},
   {name:'Kitchen Sectional',beds:[{type:'Sectional',slots:['James Crenshaw']}]},
   {name:'Living Room Couch',beds:[{type:'Couch',slots:['Mike Sehlinger']}]}
 ];
